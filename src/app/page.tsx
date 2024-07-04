@@ -1,38 +1,32 @@
 'use client';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { clear, add } from '@/redux/slice/auth-slice';
+import { connect } from '@/redux/slice/auth-slice';
 import { RootState } from '@/redux/store';
 import { useState } from 'react';
+import {stat} from "fs";
 
 const Home = () => {
-    const text = useSelector((state: RootState) => state.code.value);
-    const dispatch = useDispatch();
-    const [inputValue, setInputValue] = useState('');
+    const code = useSelector((state: RootState) => state.data.code);
+    const text = useSelector((state: RootState) => state.data.text);
+    const list = useSelector((state: RootState) => state.data.list);
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        dispatch(add(inputValue));
-        setInputValue(''); // 입력 필드를 비웁니다.
-    };
+    const dispatch = useDispatch();
+    let dragge = false;
+
 
     return (
         <div>
-            <div>
-                <button
-                    aria-label="Clear value"
-                    onClick={() => dispatch(clear())}
-                >
-                    Clear
-                </button>
-                <span>{text}</span>
-                <form onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
-                    />
-                </form>
+            <input type="submit" value="start" onSubmit={() => {
+                dragge != dragge;
+            }} />
+            <input type="submit" value="end" onSubmit={() => {
+
+            }} />
+            <div className="flex-row-reverse">
+                <p>{code}</p>
+                <p>{text}</p>
+                <p>{dragge}</p>
             </div>
         </div>
     );

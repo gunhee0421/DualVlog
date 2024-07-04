@@ -4,7 +4,7 @@ import textReducer from "../redux/slice/auth-slice";
 // redux의 데이터를 정의하는 부분
 export const store = configureStore({
     reducer: {
-        code: textReducer,
+        data: textReducer,
     },
 });
 
