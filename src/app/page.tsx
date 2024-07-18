@@ -5,8 +5,8 @@ import { connect } from '@/redux/slice/auth-slice';
 import { RootState } from '@/redux/store';
 import {useEffect, useState} from "react";
 import "./styles/globals.css";
-import CodeView from "@/app/component/code/CodeVIew";
-import TextView from "@/app/component/text/TextView";
+import CodeView from "@/app/component/blogView/code/CodeVIew";
+import TextView from "@/app/component/blogView/text/TextView";
 
 const Home = () => {
     const data = useSelector((state: RootState) => state.data);
@@ -30,7 +30,7 @@ const Home = () => {
                 "
                 >{code}</CodeView>
                 <TextView text={text} link={link}
-                    className="max-h-screen overflow-y-auto whitespace-pre-wrap w-3/5
+                    className="max-h-60 overflow-y-auto whitespace-pre-wrap w-3/5
                     px-3 py-2 my-auto
                   "
                 >{text}</TextView>
