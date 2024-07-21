@@ -1,15 +1,19 @@
 'use client';
 
-import "./styles/globals.css";
-import Link from "next/link";
-import "./styles/globals.css";
+import TopNavigation from "@/app/component/home/TopNavigation";
+import MiddleNavigation from "@/app/component/home/MiddleNavigation";
+import {useState} from "react";
+import ContentView from "@/app/component/home/ContentView";
 
 const Home = () => {
+    const [index, setIndex] = useState(1);
+    const [time, setTime] = useState(1);
 
     return (
-        <div className="flex flex-col py-2 px-4 overflow-hidden w-fit max-h-screen">
-            <h1>Home </h1>
-            <Link href="/blog">blogView</Link>
+        <div className="flex flex-col px-24 bg-gray-50 h-screen">
+            <TopNavigation />
+            <MiddleNavigation index={index} setIndex={setIndex} time={time} setTime={setTime}/>
+            <ContentView />
         </div>
     );
 };
