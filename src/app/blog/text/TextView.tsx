@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import getPtageText from "@/app/component/blogView/text/getPtageText";
-import getLinkText from "@/app/component/blogView/text/getLinkText";
+import getPtageText from "@/app/blog/text/getPtageText";
+import getLinkText from "@/app/blog/text/getLinkText";
 import {current} from "immer";
 
 const TextView = ({ text, link, className }) => {

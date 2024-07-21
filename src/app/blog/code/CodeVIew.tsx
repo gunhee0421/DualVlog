@@ -1,6 +1,6 @@
 import Link from "next/link";
-import getPtageCode from "@/app/component/blogView/code/getPtageCode";
-import getLinkCode from "@/app/component/blogView/code/getLinkCode";
+import getPtageCode from "@/app/blog/code/getPtageCode";
+import getLinkCode from "@/app/blog/code/getLinkCode";
 
 
 const CodeView = ({code, link, className}) => {
