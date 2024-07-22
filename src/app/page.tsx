@@ -7,7 +7,7 @@ import ContentView from "@/app/component/home/ContentView";
 
 const Home = () => {
     const [index, setIndex] = useState(1);
-    const [time, setTime] = useState(1);
+    const [time, setTime] = useState(7);
 
     return (
         <div className="flex flex-col px-24 bg-gray-50 h-screen">
