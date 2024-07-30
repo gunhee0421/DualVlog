@@ -2,7 +2,7 @@ import Image from "next/image";
 import {rgba} from "color2k";
 const CardComponent = ({ props }) => {
     return(
-        <div className="flex flex-col shadow-md mx-1 w-fit" style={{width: "330px", height: "360px", marginBottom: "10px"}}>
+        <div className="flex flex-col shadow-md mx-1 w-fit" style={{width: "330px", height: "360px", marginBottom: "20px"}}>
             <div className="relative w-full h-full">
                 <Image src={props.img} alt={"error"} layout="fill" />
             </div>

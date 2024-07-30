@@ -137,38 +137,49 @@ const ContentView = () => {
         slidesToScroll: 1,
     };
 
-    const [groupedData, setGroupedData] = useState(getCardNumber(data));
+    const [groupedData, setGroupedData] = useState([]);
+
     useEffect(() => {
-        const handleResize = debounce(() => {
-            setGroupedData(getCardNumber(data));
-        }, 200);
+        if (typeof window !== 'undefined') {
+            const updateCardNumber = () => {
+                const newGroupedData = getCardNumber(data);
+                setGroupedData(newGroupedData);
+            };
 
-        window.addEventListener('resize', handleResize);
+            updateCardNumber();
+            const handleResize = debounce(updateCardNumber, 200);
+            window.addEventListener('resize', handleResize);
 
-        // cleanup 함수에서 이벤트 리스너 제거
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [data]);
+            return () => {
+                window.removeEventListener('resize', handleResize);
+            };
+        }
+    }, []);
 
     return (
-        <Slider {...settings}>
-            {groupedData.map((group, index) => (
-                <div key={index}>
-                    <div className="flex flex-wrap">
-                        {group.map((item, itemIndex) => (
-                            <div key={itemIndex} className="h-1/2">
-                                <CardComponent props={item} />
-                            </div>
-                        ))}
+        <div className="w-full h-screen bg-white">
+            <Slider {...settings}>
+                {groupedData.map((group, index) => (
+                    <div key={index}>
+                        <div className="flex flex-wrap">
+                            {group.map((item, itemIndex) => (
+                                <div key={itemIndex} className="h-1/2">
+                                    <CardComponent props={item} />
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            ))}
-        </Slider>
+                ))}
+            </Slider>
+        </div>
     );
 };
 const getCardNumber = (data) =>{
-    const width = window.innerWidth-192;
+    if (typeof window == "undefined") {
+        return [];
+    }
+
+    const width = window.innerWidth - 192;
     const height = window.innerHeight;
     const cardRow = 338;
     const cardCol = 370;
