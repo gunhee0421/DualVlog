@@ -1,9 +1,11 @@
 'use client';
 
-import TopNavigation from "@/app/component/home/TopNavigation";
-import MiddleNavigation from "@/app/component/home/MiddleNavigation";
-import {useState} from "react";
-import ContentView from "@/app/component/home/ContentView";
+import TopNavigation from "@/components/home/TopNavigation";
+import MiddleNavigation from "@/components/home/MiddleNavigation";
+import {useEffect, useState} from "react";
+import ContentView from "@/components/home/ContentView";
+import {server} from '@/mocks/worker/server';
+import { get } from "http";
 
 const Home = () => {
     const [index, setIndex] = useState(1);

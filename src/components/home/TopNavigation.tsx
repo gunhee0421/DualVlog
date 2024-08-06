@@ -1,5 +1,5 @@
-import TopLog from "@/app/component/home/topLog";
-import Login from "@/app/component/home/Login";
+import TopLog from "@/components/home/topLog";
+import Login from "@/components/home/Login";
 import Link from "next/link";
 
 const TopNavigation = () => {

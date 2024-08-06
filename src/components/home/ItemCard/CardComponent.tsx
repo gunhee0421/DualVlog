@@ -23,7 +23,7 @@ const CardComponent = ({ props }) => {
                 </div>
                 <div className="flex flex-row items-center justify-between w-10">
                     <svg width="12" height="12" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_7_4876)">
+                        <g clipPath="url(#clip0_7_4876)">
                             <path d="M9.33398 1.48047L6.33398 3.48047L3.33398 1.48047L0.333984 3.98047V7.48047L6.33398 12.4805L12.334 7.48047V3.98047L9.33398 1.48047Z" fill="#212529"/>
                         </g>
                         <defs>

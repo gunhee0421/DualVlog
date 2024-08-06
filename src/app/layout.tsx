@@ -3,6 +3,7 @@ import {Nanum_Gothic} from "next/font/google"
 import "./styles/globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { MSWComponent } from "@/mocks/MSWComponet";
 
 export const metadata = {
   title: 'Next.js',
@@ -19,12 +20,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-      <TestProvider >
-        <html lang="en">
-            <body className={FontStyle.className}>
-                {children}
-            </body>
-        </html>
-      </TestProvider>
+    <html lang="en">
+      <body className={FontStyle.className}>
+        <MSWComponent>
+          <TestProvider>
+            {children}
+          </TestProvider>
+        </MSWComponent>
+      </body>
+    </html>
   )
 }
