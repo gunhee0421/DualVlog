@@ -1,6 +1,6 @@
-import MiddleItem from "@/components/home/MiddleItem";
+import MiddleItem from "../../components/home/MiddleItem";
 
-const MiddleItems = ({index, setIndex}) => {
+const MiddleItems = ({index, setIndex}: any) => {
     return(
         <div className="flex flex-row justify-between w-60">
             <MiddleItem svgIcon={<svg width="32" height="24" viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg">

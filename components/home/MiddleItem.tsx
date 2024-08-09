@@ -1,5 +1,5 @@
 
-const MiddleItem = ({svgIcon, text, color, border, bold, onClick}) => {
+const MiddleItem = ({svgIcon, text, color, border, bold, onClick}:any) => {
     return(
         <div className="flex flex-row py-3" onClick={onClick} style={{color, borderBottom: border}}>
             <div className="flex">{svgIcon}</div>

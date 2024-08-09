@@ -1,10 +1,10 @@
 import {configureStore} from "@reduxjs/toolkit";
-import textReducer from "../redux/slice/auth-slice";
+import loginReducer from "./slice/loginSlice";
 
 // redux의 데이터를 정의하는 부분
 export const store = configureStore({
     reducer: {
-        data: textReducer,
+        login: loginReducer,
     },
 });
 

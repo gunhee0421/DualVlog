@@ -1,4 +1,4 @@
-import LoginButton from '@/components/login/loginButton';
+import LoginButton from '../../../components/login/loginButton';
 
 const LoginPage: React.FC = () => {
   return (

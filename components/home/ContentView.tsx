@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import CardComponent from "@/components/home/ItemCard/CardComponent";
+import CardComponent from "../../components/home/ItemCard/CardComponent";
 import {debounce} from "next/dist/server/utils";
 import { useQuery } from '@tanstack/react-query';
 import { list } from 'postcss';
@@ -17,8 +17,12 @@ interface DataItems {
   like: number,
   comment: number
 }
+interface ApiResponse {
+  code: number,
+  result: DataItems[]
+}
 
-const fetchBlog = async() : Promise<DataItems[]> => {
+const fetchBlog = async() : Promise<ApiResponse> => {
   const response = await fetch('https://blog/info');
   if (!response.ok){
     throw new Error("fetch error")
@@ -37,17 +41,28 @@ const ContentView = () => {
 
     const [groupedData, setGroupedData] = useState<DataItems[][]>([]);
     
-    const { isLoading, data=[], isError, error } = useQuery({
+    const { isLoading, data, isError, error } = useQuery({
       queryKey: ['getBlog'],
       queryFn: fetchBlog,
     });
 
     useEffect(() => {
-      console.log(data)
-      if (data.length>0) {
-        console.log()
-        setGroupedData(getCardNumber(data))
+      if (data?.code==200) {
+        setGroupedData(getCardNumber(data?.result))
       }
+    }, [data]);
+
+    useEffect(() => {
+        const handleResize = debounce(() => {
+            setGroupedData(getCardNumber(data?.result));
+        }, 200);
+
+        window.addEventListener('resize', handleResize);
+
+        // cleanup 함수에서 이벤트 리스너 제거
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, [data]);
 
     if (isLoading){

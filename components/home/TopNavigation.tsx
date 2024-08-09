@@ -1,8 +1,14 @@
-import TopLog from "@/components/home/topLog";
-import Login from "@/components/home/Login";
+import TopLog from "../../components/home/topLog";
+import Login from "../../components/home/Login";
 import Link from "next/link";
+import { useScroll } from "framer-motion";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { stat } from "fs";
+import { log } from "console";
 
 const TopNavigation = () => {
+    const login = useSelector((state: RootState) => state.login.accessToken)
 
     return(
         <div className="flex flex-row justify-between items-center py-2">
@@ -18,9 +24,14 @@ const TopNavigation = () => {
                         <path d="M27.326 28.712L21.517 22.904C20.9917 23.3332 20.394 23.6651 19.752 23.884C19.0663 24.1222 18.3449 24.2419 17.619 24.238C15.77 24.238 14.205 23.598 12.922 22.315C11.641 21.033 11 19.468 11 17.619C11 15.77 11.637 14.205 12.91 12.922C14.183 11.641 15.744 11 17.593 11C19.459 11 21.033 11.64 22.316 12.922C23.598 14.205 24.238 15.77 24.238 17.619C24.238 18.369 24.121 19.079 23.886 19.751C23.6627 20.4 23.3306 21.0063 22.904 21.544L28.738 27.352C28.824 27.4374 28.8916 27.5394 28.9366 27.6519C28.9817 27.7644 29.0033 27.8849 29 28.006C29 28.267 28.904 28.503 28.712 28.712C28.6223 28.8048 28.5145 28.8783 28.3953 28.9278C28.2762 28.9774 28.1481 29.0019 28.019 29C27.8899 29.0019 27.7619 28.9773 27.6427 28.9277C27.5235 28.8782 27.4157 28.8048 27.326 28.712ZM17.619 22.276C18.909 22.276 20.009 21.823 20.916 20.916C21.823 20.009 22.276 18.91 22.276 17.619C22.276 16.311 21.823 15.208 20.916 14.309C20.009 13.411 18.91 12.962 17.619 12.962C16.311 12.962 15.208 13.412 14.31 14.309C13.412 15.208 12.962 16.311 12.962 17.619C12.962 18.909 13.412 20.009 14.31 20.916C15.208 21.823 16.31 22.276 17.619 22.276Z" fill="#212529"/>
                     </svg>
                 </Link>
-                <Link href="/login">
-                    <Login />
-                </Link>
+                {login==null ? 
+                  <Link href="/login">
+                      <Login />
+                  </Link> : 
+                  <div className="flex justify-center items-center">
+                    ***님
+                  </div>
+                }
             </div>
         </div>
     )

@@ -1,6 +1,18 @@
 import Image from "next/image";
 import {rgba} from "color2k";
-const CardComponent = ({ props }) => {
+
+interface DataItems {
+  img: string,
+  title: string,
+  content: string,
+  data: Date,
+  logo: string,
+  name: string,
+  like: number,
+  comment: number
+}
+
+const CardComponent: React.FC<{props: DataItems}> = ({ props }) => {
     return(
         <div className="flex flex-col shadow-md mx-1 w-fit" style={{width: "330px", height: "360px", marginBottom: "20px"}}>
             <div className="relative w-full h-full">
@@ -12,7 +24,7 @@ const CardComponent = ({ props }) => {
                     <p className="text-sm" style={{color: 'rgb(73,80,87'}}>{props.content}</p>
                 </div>
                 <div className="flex flex-row justify-between">
-                    <p className="text-xs" style={{color: 'rgb(134, 142, 150)'}}>{formatDate(props.date)}</p>
+                    <p className="text-xs" style={{color: 'rgb(134, 142, 150)'}}>{formatDate(props.data)}</p>
                     <p className="text-xs" style={{color: 'rgb(134, 142, 150)'}}>{props.comment > 0 ? `${props.comment}개의 댓글` : null}</p>
                 </div>
             </div>
@@ -38,7 +50,7 @@ const CardComponent = ({ props }) => {
         </div>
     )
 }
-const formatDate = (date) => {
+const formatDate = (date:any) => {
     const cDate = new Date(date);
     const year = cDate.getFullYear();
     const month = cDate.getMonth() + 1;
