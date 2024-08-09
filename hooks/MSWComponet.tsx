@@ -7,7 +7,7 @@ const initializeMSW = async () => {
     process.env.NEXT_RUNTIME !== 'nodejs' &&
     process.env.NEXT_PUBLIC_MSW === 'enable'
   ) {
-    const { worker } = await import('../mocks/worker/browser')
+    const { worker } = await import('../src/mocks/worker/browser')
     await worker.start({
       onUnhandledRequest: 'bypass',
     })

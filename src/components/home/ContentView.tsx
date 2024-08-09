@@ -4,6 +4,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import CardComponent from "@/components/home/ItemCard/CardComponent";
 import {debounce} from "next/dist/server/utils";
+import { useQuery } from '@tanstack/react-query';
+import { list } from 'postcss';
 
 interface DataItems {
   img: string,
@@ -16,6 +18,14 @@ interface DataItems {
   comment: number
 }
 
+const fetchBlog = async() : Promise<DataItems[]> => {
+  const response = await fetch('https://blog/info');
+  if (!response.ok){
+    throw new Error("fetch error")
+  }
+  return await response.json();
+}
+
 const ContentView = () => {
     const settings = {
         dots: true,
@@ -24,42 +34,28 @@ const ContentView = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
     };
-    
-    const [data, setData] = useState([]);
+
     const [groupedData, setGroupedData] = useState<DataItems[][]>([]);
-
-    useEffect(()=> {
-      const fetchData = async() => {
-        try{
-          const response = await fetch('https://blog/info');
-          const result = await response.json();
-
-          if (result.code === 200){
-            setData(result.result);
-          }
-        } catch(error){
-          console.log(error);
-        }
-      }
-      fetchData();
-    },[])
+    
+    const { isLoading, data=[], isError, error } = useQuery({
+      queryKey: ['getBlog'],
+      queryFn: fetchBlog,
+    });
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const updateCardNumber = () => {
-                const newGroupedData = getCardNumber(data);
-                setGroupedData(newGroupedData);
-            };
-
-            updateCardNumber();
-            const handleResize = debounce(updateCardNumber, 200);
-            window.addEventListener('resize', handleResize);
-
-            return () => {
-                window.removeEventListener('resize', handleResize);
-            };
-        }
+      console.log(data)
+      if (data.length>0) {
+        console.log()
+        setGroupedData(getCardNumber(data))
+      }
     }, [data]);
+
+    if (isLoading){
+      return <div>Loading</div>
+    }
+    if (isError) {
+      return <div>Error: {error?.message}</div>
+    }
 
     return (
         <div className="w-full h-screen bg-white">

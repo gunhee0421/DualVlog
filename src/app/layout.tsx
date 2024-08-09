@@ -1,9 +1,10 @@
-import TestProvider from "@/app/TestProvider";
+import TestProvider from "../../hooks/TestProvider";
 import {Nanum_Gothic} from "next/font/google"
 import "./styles/globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { MSWComponent } from "@/mocks/MSWComponet";
+import { MSWComponent } from "../../hooks/MSWComponet";
+import ReactQueryProviders from "../../hooks/ReactQueryProviders";
 
 export const metadata = {
   title: 'Next.js',
@@ -23,9 +24,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={FontStyle.className}>
         <MSWComponent>
-          <TestProvider>
-            {children}
-          </TestProvider>
+          <ReactQueryProviders>
+            <TestProvider>
+              {children}
+            </TestProvider>
+          </ReactQueryProviders>
         </MSWComponent>
       </body>
     </html>
