@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import getPtageText from "@/app/blog/text/getPtageText";
 import getLinkText from "@/app/blog/text/getLinkText";
-import {current} from "immer";
+import { current } from "immer";
 
 const TextView = ({ text, link, className }) => {
     const textRef = useRef<HTMLElement | null | any>(null);
@@ -22,13 +22,18 @@ const TextView = ({ text, link, className }) => {
                     const rect = child.getBoundingClientRect();
                     let containerRect;
                     if ("getBoundingClientRect" in containerRef.current) {
-                        containerRect = containerRef.current.getBoundingClientRect();
+                        containerRect =
+                            containerRef.current.getBoundingClientRect();
                     }
-                    if (rect.top >= containerRect.top && rect.bottom > containerRect.top) {
+                    if (
+                        rect.top >= containerRect.top &&
+                        rect.bottom > containerRect.top
+                    ) {
                         if (textRef.current !== child) {
                             textRef.current = child;
-                            if (textRef.current.tagName.toLowerCase() == 'a') {
-                                const href = textRef.current.getAttribute('href');
+                            if (textRef.current.tagName.toLowerCase() == "a") {
+                                const href =
+                                    textRef.current.getAttribute("href");
                                 if (href) {
                                     window.location.href = href;
                                 }
@@ -42,13 +47,13 @@ const TextView = ({ text, link, className }) => {
 
         const container = containerRef.current;
         if (container) {
-            container.addEventListener('scroll', handleScroll);
+            container.addEventListener("scroll", handleScroll);
             handleScroll(); // Initial call to set the first visible element
         }
 
         return () => {
             if (container) {
-                container.removeEventListener('scroll', handleScroll);
+                container.removeEventListener("scroll", handleScroll);
             }
         };
     }, []);
