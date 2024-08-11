@@ -48,7 +48,7 @@ const LoginButton: React.FC<LoginButtonProps> = ({
 
     return (
         <div
-            className={`flex flex-row w-fit px-20 py-3 rounded-3xl justify-center items-center ${bgColor} my-2 transform hover:scale-105 transition duration-300 cursor-pointer`}
+            className={`flex flex-row w-fit font-pretendard px-16 py-3 rounded-3xl justify-center items-center ${bgColor} my-2 transform hover:scale-105 transition duration-300 cursor-pointer hover:shadow-md`}
             onClick={() => mutate()}
         >
             <Image src={imageUrl} width={40} height={55} alt={altText} />

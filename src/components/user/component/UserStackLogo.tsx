@@ -5,8 +5,8 @@ const UserStackLogo = ({ stack }: any) => {
         <Image
             className=" mr-[5px]"
             src={`https://cdn.simpleicons.org/${stack}`}
-            width={34}
-            height={34}
+            width={24}
+            height={24}
             alt="error"
         />
     );

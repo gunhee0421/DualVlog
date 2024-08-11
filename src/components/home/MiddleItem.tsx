@@ -6,10 +6,7 @@ const MiddleItem = ({ svgIcon, text, color, border, bold, onClick }: any) => {
             style={{ color, borderBottom: border }}
         >
             <div className="flex">{svgIcon}</div>
-            <p
-                className="flex text-lg whitespace-nowrap"
-                style={{ fontWeight: bold }}
-            >
+            <p className="flex text-lg whitespace-nowrap font-semibold tracking-tighter">
                 {text}
             </p>
         </div>

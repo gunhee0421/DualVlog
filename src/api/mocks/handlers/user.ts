@@ -16,7 +16,7 @@ export const user = [
                     stack: ["next.js", "springboot", "react"],
                     blog: [
                         {
-                            id: 1,
+                            id: "9a9022a6-9bb3-4fc6-b146-2e99a1fa006b",
                             img: "/images/home/toss.png",
                             title: "토스 안드로이드 개발자 합격 후기",
                             content:
@@ -24,8 +24,44 @@ export const user = [
                             date: "2024-08-09T12:34:56.789Z",
                             logo: "/images/home/logo.png",
                             name: "이현우",
-                            like: 80,
+                            like: 11,
                             comment: 7,
+                        },
+                        {
+                            id: "cf8f7461-1445-4ac3-907b-58d61ef8d06f",
+                            img: "/images/home/toss.png",
+                            title: "토스 안드로이드 개발자 합격 후기",
+                            content:
+                                "꽁꽁 얼어붙은 취업시장을 뚫고 아크플레이스로 걸어갑니다.",
+                            date: "2024-08-19T12:34:56.789Z",
+                            logo: "/images/home/logo.png",
+                            name: "이현우",
+                            like: 80,
+                            comment: 6,
+                        },
+                        {
+                            id: "84adf7f3-1f64-4d78-9ed7-55f29a01a04e",
+                            img: "/images/home/human.png",
+                            title: "비전공자 백엔드 취업 성공!",
+                            content:
+                                "경영학부 졸업생도 취업할 수 있습니다! 개발 시작부터 취업까지 모든 것 공개!",
+                            date: "2024-08-09T12:34:56.789Z",
+                            logo: "/images/home/logo.png",
+                            name: "전반숙",
+                            like: 152,
+                            comment: 39,
+                        },
+                        {
+                            id: "84adf7f3-1f64-4d78-9ed7-55f29a01a04e",
+                            img: "/images/home/human.png",
+                            title: "비전공자 백엔드 취업 성공!",
+                            content:
+                                "경영학부 졸업생도 취업할 수 있습니다! 개발 시작부터 취업까지 모든 것 공개!",
+                            date: "2024-08-09T12:34:56.789Z",
+                            logo: "/images/home/logo.png",
+                            name: "전반숙",
+                            like: 152,
+                            comment: 39,
                         },
                     ],
                 },

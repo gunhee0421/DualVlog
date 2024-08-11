@@ -2,8 +2,13 @@ import LoginButton from "@/components/login/loginButton";
 
 const LoginPage: React.FC = () => {
     return (
-        <div className="flex flex-col w-screen h-screen items-center px-20 py-4 justify-center bg-gray-50">
-            <h1 className="font-black text-4xl my-5">Log in to Dual Vlog</h1>
+        <div className="flex flex-col w-screen h-screen items-center px-20 py-4 bg-gray-50">
+            <h1 className="font-black text-6xl mt-[200px] font-pretendard">
+                Log in to
+            </h1>
+            <h1 className="text-gray-500 text-5xl mb-[50px] font-pretendard tracking-tighter font-extrabold">
+                Daul Velog
+            </h1>
             <LoginButton
                 service="github"
                 imageUrl="/images/login/github.png"

@@ -7,12 +7,15 @@ import { debounce } from "next/dist/server/utils";
 import { useQuery } from "@tanstack/react-query";
 import { list } from "postcss";
 import { ContentViewProps, DataItems } from "@/lib/Lib";
+import { getCardNumber } from "./function/getCardNumber";
 
 const ContentView: React.FC<ContentViewProps> = ({ data }) => {
     const settings = {
         dots: true,
         infinite: true,
+        arrows: false,
         speed: 500,
+        centerMode: true,
         slidesToShow: 1,
         slidesToScroll: 1,
     };
@@ -30,7 +33,6 @@ const ContentView: React.FC<ContentViewProps> = ({ data }) => {
 
         window.addEventListener("resize", handleResize);
 
-        // cleanup 함수에서 이벤트 리스너 제거
         return () => {
             window.removeEventListener("resize", handleResize);
         };
@@ -40,8 +42,8 @@ const ContentView: React.FC<ContentViewProps> = ({ data }) => {
         <div className="w-full h-screen bg-white">
             <Slider {...settings}>
                 {groupedData.map((group, index) => (
-                    <div key={index}>
-                        <div className="flex flex-wrap">
+                    <div key={index} className="pt-3">
+                        <div className="flex flex-wrap justify-center items-center w-full">
                             {group.map((item, itemIndex) => (
                                 <div key={itemIndex} className="h-1/2">
                                     <CardComponent props={item} />
@@ -53,25 +55,6 @@ const ContentView: React.FC<ContentViewProps> = ({ data }) => {
             </Slider>
         </div>
     );
-};
-const getCardNumber = (data: any) => {
-    if (typeof window == "undefined") {
-        return [];
-    }
-
-    const width = window.innerWidth - 192;
-    const height = window.innerHeight;
-    const cardRow = 338;
-    const cardCol = 370;
-    const cardsPerRow = Math.floor(width / cardRow);
-    const cardsPerCol = Math.floor(height / cardCol);
-    const cardsPage = cardsPerRow * cardsPerCol;
-
-    const result = [];
-    for (let i = 0; i < data.length; i += cardsPage) {
-        result.push(data.slice(i, i + cardsPage));
-    }
-    return result;
 };
 
 export default ContentView;

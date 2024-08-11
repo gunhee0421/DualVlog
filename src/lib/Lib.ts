@@ -7,12 +7,14 @@ export interface UserInfo {
     userlogo: string;
     introduce: string;
     stack: Array<string> | [];
+    blog: DataItems[] | null;
 }
 export interface UserResponse {
     state: number;
     result: UserInfo;
 }
 export interface DataItems {
+    id: UUID,
     img: string;
     title: string;
     content: string;
@@ -28,4 +30,9 @@ export interface Blogs {
 }
 export interface ContentViewProps {
     data: DataItems[];
+}
+export interface SearchProps {
+    width: number,
+    height: number,
+    size: number
 }

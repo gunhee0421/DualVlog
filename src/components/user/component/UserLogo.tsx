@@ -11,8 +11,8 @@ const UserLogo = () => {
         return (
             <Image
                 src={"/images/user/userlogo.png"}
-                width={134}
-                height={134}
+                width={100}
+                height={100}
                 alt="error"
             />
         );

@@ -77,13 +77,13 @@ const TopNavigation = () => {
                     <div className="flex flex-row justify-center items-center">
                         <Link
                             href={`/user/${data?.result?.id}`}
-                            className="flex px-2"
+                            className="font-pretendard px-2"
                         >
                             {data?.result?.name}님
                         </Link>
                         <button
                             onClick={() => dispatch(logout())}
-                            className="py-1 px-3 rounded-md font-bold text-gray-600"
+                            className="py-1 px-3 rounded-md font-bold text-gray-600 hover:text-sky-400"
                         >
                             로그아웃
                         </button>
