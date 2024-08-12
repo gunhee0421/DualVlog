@@ -22,7 +22,11 @@ const UserBlogs = () => {
     };
 
     if (!data?.result.blog || data.result.blog.length === 0) {
-        return <div>포스트가 없습니다.</div>;
+        return (
+            <div className="flex h-full justify-center items-center font-pretendard ">
+                포스트가 없습니다.
+            </div>
+        );
     }
 
     return (

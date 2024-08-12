@@ -1,5 +1,10 @@
 import React from "react";
-import { SearchProps } from "@/lib/Lib";
+
+export interface SearchProps {
+    width: number;
+    height: number;
+    size: number;
+}
 
 export const SearchBar: React.FC<SearchProps> = ({ width, height, size }) => {
     return (
@@ -7,7 +12,6 @@ export const SearchBar: React.FC<SearchProps> = ({ width, height, size }) => {
             className="flex items-center justify-end border border-gray-300 rounded bg-white py-5"
             style={{ width: `${width}px`, height: `${height}px` }}
         >
-            {/* 돋보기 아이콘 */}
             <div className="flex items-center justify-center px-2 bg-white">
                 <svg
                     width={size - 5}
@@ -24,7 +28,6 @@ export const SearchBar: React.FC<SearchProps> = ({ width, height, size }) => {
                     />
                 </svg>
             </div>
-            {/* 검색 입력 필드 */}
             <input
                 className="flex-1 px-2 py-1 focus:outline-none bg-none w-full"
                 type="text"

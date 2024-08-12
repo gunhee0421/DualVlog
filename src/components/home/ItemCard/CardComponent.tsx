@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { DataItems } from "@/lib/Lib";
+import { BlogItem } from "@/api/services/blog/model";
 
-const CardComponent: React.FC<{ props: DataItems }> = ({ props }) => {
+const CardComponent: React.FC<{ props: BlogItem }> = ({ props }) => {
     return (
         <Link href={`blog/${props.id}`}>
             <div

@@ -1,8 +1,9 @@
 import { code } from "@nextui-org/theme";
 import { http, HttpResponse } from "msw";
+import { Content } from "next/font/google";
 
 export const blog = [
-    http.get(`https://blog/info`, () => {
+    http.get(`https://blogs`, () => {
         return HttpResponse.json({
             state: 200,
             result: [
@@ -153,4 +154,36 @@ export const blog = [
             ],
         });
     }),
+    http.get(`https://blog?blogId=0bfac118-02f2-4e34-8f38-2b91b5c0b2a8`, ()=> {
+        return HttpResponse.json({
+            state: 200,
+            result:{
+                id: "0bfac118-02f2-4e34-8f38-2b91b5c0b2a8",
+                title: "비전공자 백엔드 취업 성공!",
+                createdAt: "2024-08-08T12:34:56.789Z",
+                logo: "/images/home/logo.png",
+                name: "전반숙",
+                like: 152,
+                comment: 39,
+                content: [
+                    {
+                        type: "paragraph",
+                        content: "This is **bold text**, and this is *italic text*. You can also create [links](https://example.com).\n- Item 1\n- Item 2\n- Subitem 2.1\n- Subitem 2.2\n > This is a blockquote. It's great for highlighting quotes or important information."
+                    },
+                    {
+                        type: "codeBlock",
+                        link: [[[1,2,3], 1], [[7,8,9], 5]],
+                        content: {
+                            code: "function greet(name) {\n  const greeting = `Hello, ${name}!`;\n  console.log(greeting);\n}\n\nconst names = ['Alice', 'Bob', 'Charlie'];\nnames.forEach((name) => {\n  greet(name);\n});\nconsole.log('Greeting complete!');",
+                            text: "이 코드는 이름 목록을 순회하며 각 이름에 대해 인사말을 출력합니다.\n'greet' 함수는 이름을 받아서 'Hello, {name}!' 형식의 인사말을 생성합니다.\n'forEach'를 사용하여 'names' 배열의 각 이름에 대해 'greet' 함수를 호출합니다.\n모든 인사말을 출력한 후 'Greeting complete!' 메시지를 출력합니다.\n이 코드는 콘솔에 각 이름에 대한 인사말과 완료 메시지를 표시​⬤"
+                        }
+                    },
+                    {
+                        type: "paragraph",
+                        content: "# Markdown Example\nThis is **bold text** and *italic text*.\nHere is a [link](https://example.com) to a website."
+                    }
+                ]
+            },
+        })
+    })
 ];

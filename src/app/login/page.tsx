@@ -1,6 +1,6 @@
 import LoginButton from "@/components/login/loginButton";
 
-const LoginPage: React.FC = () => {
+const LoginPage = () => {
     return (
         <div className="flex flex-col w-screen h-screen items-center px-20 py-4 bg-gray-50">
             <h1 className="font-black text-6xl mt-[200px] font-pretendard">
