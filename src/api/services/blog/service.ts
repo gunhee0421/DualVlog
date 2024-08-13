@@ -7,8 +7,8 @@ export const blogService = {
         const response = await axios.get("https://blogs")
         return await response.data
     },
-    async getBlog(client: QueryClient){
-        const response = await axios.get('https://blog?blogId=0bfac118-02f2-4e34-8f38-2b91b5c0b2a8')
+    async getBlog(client: QueryClient, id: string){
+        const response = await axios.get(`https://blog?blogId=${id}`)
         return await response.data
     }
 }

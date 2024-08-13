@@ -18,7 +18,7 @@ export interface BlogsInfo<T> {
 export interface InsertBlogItem {
     id: UUID,
     title: string,
-    content: (Paragraph | CodeBlock)[] | null,
+    content: (Paragraph | CodeBlock)[],
     createdAt: string,
     comment: number,
     like: number,
@@ -36,4 +36,12 @@ export interface CodeBlock {
         code: string,
         text: string
     }
+}
+
+export function isParagraph(content: Paragraph | CodeBlock): content is Paragraph {
+    return content.type === 'paragraph';
+}
+
+export function isCodeBlock(content: Paragraph | CodeBlock): content is CodeBlock {
+    return content.type === 'codeblock';
 }
