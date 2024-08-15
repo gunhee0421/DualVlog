@@ -1,6 +1,11 @@
-import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/dropdown";
+import {
+    Dropdown,
+    DropdownItem,
+    DropdownMenu,
+    DropdownTrigger,
+} from "@nextui-org/dropdown";
 import { Selection } from "@react-types/shared";
-import React from 'react';
+import React from "react";
 
 interface MiddleDropDownProps {
     time: number;
@@ -16,13 +21,26 @@ const MiddleDropDown: React.FC<MiddleDropDownProps> = ({ time, setTime }) => {
         setTime(timeValues[selectedKey as keyof typeof timeValues]);
     };
 
-    const selectedKey = Object.keys(timeValues).find(key => timeValues[key as keyof typeof timeValues] === time) || "";
+    const selectedKey =
+        Object.keys(timeValues).find(
+            (key) => timeValues[key as keyof typeof timeValues] === time,
+        ) || "";
 
     return (
         <Dropdown backdrop="blur">
             <DropdownTrigger>
                 <button className="shadow-lg flex justify-around items-center w-28 h-10 rounded border-solid border-2 border-gray-100">
-                    {data[time === 1 ? 0 : time === 7 ? 1 : time === 30 ? 2 : 3]}
+                    {
+                        data[
+                            time === 1
+                                ? 0
+                                : time === 7
+                                  ? 1
+                                  : time === 30
+                                    ? 2
+                                    : 3
+                        ]
+                    }
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-5 w-5 ml-2"
