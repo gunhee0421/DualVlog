@@ -1,7 +1,7 @@
 import { CodeBlock, InsertBlogItem } from "@/api/services/blog/model";
 import React from "react";
 import { TextView } from "../component/TextView";
-import { CodeView } from "../component/codeView";
+import { CodeView } from "../component/CodeView";
 
 export const Code_Block: React.FC<{ props: CodeBlock }> = ({ props }) => {
     return (

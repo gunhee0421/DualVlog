@@ -31,13 +31,13 @@ export interface Paragraph {
 }
 export interface CodeBlock {
     type: string,
-    link: [[number], number],
+    language: string,
+    link: [[number, number[]]],
     content: {
         code: string,
         text: string
     }
 }
-
 export function isParagraph(content: Paragraph | CodeBlock): content is Paragraph {
     return content.type === 'paragraph';
 }

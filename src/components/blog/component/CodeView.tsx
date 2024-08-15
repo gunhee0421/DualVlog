@@ -7,13 +7,13 @@ import React from "react";
 export const CodeView: React.FC<{ props: CodeBlock }> = ({ props }) => {
     return (
         <div className={styles.codeViewContainer}>
-            <div className={styles.languageLabel}>javascript</div>
+            <div className={styles.languageLabel}>{props.language}</div>
             <SyntaxHighlighter
                 language={"javascript"}
                 style={vscDarkPlus}
                 showLineNumbers={true}
                 wrapLines={true}
-                className={styles.syntaxHighlight}
+                className={`${styles.syntaxHighlight} ${styles.scroll_container}`}
                 lineProps={(lineIndex) => ({
                     id: `code-${lineIndex}`,
                 })}

@@ -12,5 +12,5 @@ export interface UserItem {
 }
 export interface UserInfo {
     state: number;
-    result: UserItem | null;
+    result: UserItem;
 }

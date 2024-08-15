@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.list{
-    border-bottom: 2px solid;
-    @apply border-sky-400 text-sky-500
-}
-
 .markdown-body{
     @apply px-[200px]
 }
