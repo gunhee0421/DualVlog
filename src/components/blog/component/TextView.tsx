@@ -8,7 +8,7 @@ export const TextView: React.FC<{ props: CodeBlock }> = ({ props }) => {
     return (
         <div className="flex flex-col w-[47%] whitespace-pre-wrap px-4 py-2 max-h-[30vh] overflow-y-auto border-1.5 rounded-[10px]">
             {lines.map((line, idx) => (
-                <div key={idx} id={`text-${idx + 1}`} className="py-[100px]">
+                <div key={idx} id={`text-${idx + 1}`} className="py-[100px] ">
                     {line}
                 </div>
             ))}
