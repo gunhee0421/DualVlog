@@ -10,22 +10,8 @@ import Login from "../home/Login";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setLogin } from "@/redux/slice/loginSlice";
-
-interface LoginButtonProps {
-    service: string;
-    imageUrl: string;
-    altText: string;
-    bgColor: string;
-}
-
-const LoginApi = async (service: string) => {
-    const response = await fetch(`https://login/${service}`);
-
-    if (!response.ok) {
-        throw new Error("api error");
-    }
-    return response.json();
-};
+import { LoginButtonProps } from "@/api/services/login/model";
+import { loginService } from "@/api/services/login/service";
 
 const LoginButton: React.FC<LoginButtonProps> = ({
     service,
@@ -36,7 +22,7 @@ const LoginButton: React.FC<LoginButtonProps> = ({
     const router = useRouter();
     const dispatch = useDispatch();
     const { mutate, isError, error, data } = useMutation({
-        mutationFn: () => LoginApi(service),
+        mutationFn: () => loginService.login(service),
         onSuccess: (data) => {
             dispatch(setLogin(data?.result?.accessToken));
             router.push("/");

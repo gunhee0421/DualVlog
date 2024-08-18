@@ -6,10 +6,10 @@ import CardComponent from "../../components/home/ItemCard/CardComponent";
 import { debounce } from "next/dist/server/utils";
 import { useQuery } from "@tanstack/react-query";
 import { list } from "postcss";
-import { ContentViewProps, DataItems } from "@/lib/Lib";
 import { getCardNumber } from "./function/getCardNumber";
+import { BlogItem, BlogsInfo } from "@/api/services/blog/model";
 
-const ContentView: React.FC<ContentViewProps> = ({ data }) => {
+const ContentView = ({ data }: { data: BlogItem[] }) => {
     const settings = {
         dots: true,
         infinite: true,
@@ -20,7 +20,7 @@ const ContentView: React.FC<ContentViewProps> = ({ data }) => {
         slidesToScroll: 1,
     };
 
-    const [groupedData, setGroupedData] = useState<DataItems[][]>([]);
+    const [groupedData, setGroupedData] = useState<BlogItem[][]>([]);
 
     useEffect(() => {
         setGroupedData(getCardNumber(data));

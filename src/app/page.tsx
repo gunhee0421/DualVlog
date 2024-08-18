@@ -6,26 +6,19 @@ import { useEffect, useState } from "react";
 import ContentView from "@/components/home/ContentView";
 import { server } from "@/api/mocks/worker/server";
 import { get } from "http";
-import { useQuery } from "@tanstack/react-query";
-import { Blogs, DataItems } from "@/lib/Lib";
-
-const fetchBlog = async (): Promise<Blogs> => {
-    const response = await fetch("https://blog/info");
-    if (!response.ok) {
-        return { state: 400, result: null };
-    }
-    return await response.json();
-};
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+    blogQueryOptions,
+    useBlogListInfoQuery,
+} from "@/api/services/blog/query";
+import { BlogItem } from "@/api/services/blog/model";
 
 const Home = () => {
     const [index, setIndex] = useState(1);
     const [time, setTime] = useState(7);
-    const [blog, setBlog] = useState<DataItems[] | null>(null);
+    const [blog, setBlog] = useState<BlogItem[] | null>(null);
 
-    const { isLoading, data, isError, error } = useQuery<Blogs>({
-        queryKey: ["getBlog"],
-        queryFn: fetchBlog,
-    });
+    const { isLoading, data, isError } = useBlogListInfoQuery();
 
     useEffect(() => {
         if (index === 1 && data?.state === 200 && data?.result) {

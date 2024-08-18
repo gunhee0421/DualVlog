@@ -1,12 +1,9 @@
+import { useUserInfoQuery } from "@/api/services/user/query";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 
 const UserTopNavigation = () => {
-    const { data } = useQuery({
-        queryKey: ["userInfo"],
-    });
-
     return (
         <div className="flex w-full justify-end p-5">
             <Link href="/alarm">

@@ -6,36 +6,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { stat } from "fs";
 import { log } from "console";
-import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { QueryClient, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { logout } from "@/redux/slice/loginSlice";
-
-const fetchUser = async (token: any) => {
-    const response = await fetch("https://user", {
-        method: "GET",
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
-    });
-    if (!response.ok) {
-        throw new Error("axios error");
-    }
-    return await response.json();
-};
+import { useUserInfoQuery } from "@/api/services/user/query";
 
 const TopNavigation = () => {
-    const login = useSelector((state: RootState) => state.login.accessToken);
+    const token = useSelector((state: RootState) => state.login.accessToken);
     const dispatch = useDispatch();
+    const queryClient = useQueryClient();
 
-    const { isLoading, data, isError, error, refetch } = useQuery({
-        queryKey: ["userInfo"],
-        queryFn: () => fetchUser(login),
-        enabled: !!login,
-    });
+    const { isLoading, data, isError } = useUserInfoQuery();
 
     useEffect(() => {
-        refetch();
-    }, [login, refetch]);
+        if (!token) {
+            queryClient.resetQueries({
+                queryKey: ["userInfo"],
+                exact: true,
+            });
+        }
+    }, [token, queryClient]);
 
     return (
         <div className="flex flex-row justify-between items-center py-2">
@@ -69,7 +59,7 @@ const TopNavigation = () => {
                         />
                     </svg>
                 </Link>
-                {login == null ? (
+                {data?.state != 200 ? (
                     <Link href="/login">
                         <Login />
                     </Link>
