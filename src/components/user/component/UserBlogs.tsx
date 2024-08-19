@@ -2,12 +2,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useQuery } from "@tanstack/react-query";
-import { UserResponse } from "@/lib/Lib";
-import CardComponent from "@/components/home/ItemCard/CardComponent";
 import { getCardNumber } from "@/components/home/function/getCardNumber";
+import CardComponent from "@/components/home/component/ItemCard/CardComponent";
+import { UserInfo } from "@/api/services/user/model";
 
 const UserBlogs = () => {
-    const { data } = useQuery<UserResponse>({
+    const { data } = useQuery<UserInfo>({
         queryKey: ["userInfo"],
     });
 

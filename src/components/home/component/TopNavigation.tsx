@@ -1,5 +1,3 @@
-import TopLog from "../../components/home/topLog";
-import Login from "../../components/home/Login";
 import Link from "next/link";
 import { useScroll } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,16 +5,27 @@ import { RootState } from "@/redux/store";
 import { stat } from "fs";
 import { log } from "console";
 import { QueryClient, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { logout } from "@/redux/slice/loginSlice";
 import { useUserInfoQuery } from "@/api/services/user/query";
+import TopLog from "./topLog";
+import Login from "./Login";
+import { SearchModal } from "@/components/search/components/SearchModal";
+import { AlarmModal } from "@/components/alarm/AlarmModal";
 
 const TopNavigation = () => {
     const token = useSelector((state: RootState) => state.login.accessToken);
     const dispatch = useDispatch();
     const queryClient = useQueryClient();
 
+    const [search, setSearch] = useState(false);
+    const [alarm, setAlarm] = useState(false);
+
     const { isLoading, data, isError } = useUserInfoQuery();
+
+    useEffect(() => {
+        console.log(search);
+    }, [search]);
 
     useEffect(() => {
         if (!token) {
@@ -31,7 +40,12 @@ const TopNavigation = () => {
         <div className="flex flex-row justify-between items-center py-2">
             <TopLog />
             <div className="flex flex-row h-full">
-                <Link href="/alarm">
+                <button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setAlarm(!alarm);
+                    }}
+                >
                     <svg
                         width="44"
                         height="40"
@@ -44,8 +58,13 @@ const TopNavigation = () => {
                             fill="#212529"
                         />
                     </svg>
-                </Link>
-                <Link href="/search">
+                </button>
+                <button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setSearch(!search);
+                    }}
+                >
                     <svg
                         width="40"
                         height="40"
@@ -58,7 +77,7 @@ const TopNavigation = () => {
                             fill="#212529"
                         />
                     </svg>
-                </Link>
+                </button>
                 {data?.state != 200 ? (
                     <Link href="/login">
                         <Login />
@@ -79,6 +98,13 @@ const TopNavigation = () => {
                         </button>
                     </div>
                 )}
+                {search && (
+                    <SearchModal
+                        close={search}
+                        onClose={() => setSearch(false)}
+                    />
+                )}
+                {alarm && <AlarmModal onClose={() => setAlarm(false)} />}
             </div>
         </div>
     );

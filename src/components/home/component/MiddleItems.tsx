@@ -1,4 +1,4 @@
-import MiddleItem from "@/components/home/MiddleItem";
+import MiddleItem from "@/components/home/component/MiddleItem";
 
 const MiddleItems = ({ index, setIndex }: any) => {
     return (

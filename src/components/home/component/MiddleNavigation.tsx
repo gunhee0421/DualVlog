@@ -1,5 +1,5 @@
-import MiddleItems from "../../components/home/MiddleItems";
-import MiddleDropDown from "../../components/home/MiddleDropDown";
+import MiddleDropDown from "./MiddleDropDown";
+import MiddleItems from "./MiddleItems";
 
 export default function MiddleNavigation({
     index,

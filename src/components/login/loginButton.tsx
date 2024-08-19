@@ -6,7 +6,6 @@ import {
     useQuery,
 } from "@tanstack/react-query";
 import Image from "next/image";
-import Login from "../home/Login";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setLogin } from "@/redux/slice/loginSlice";

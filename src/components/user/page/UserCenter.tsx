@@ -1,9 +1,9 @@
 import { useState } from "react";
-import UserMiddle from "../component/UserMiddle";
+import { SearchBar } from "@/components/search/components/SearchBar";
 import UserLogoBar from "./UserLogoBar";
+import UserMiddle from "../component/UserMiddle";
 import Userselect from "../component/UserSelect";
 import UserBlogs from "../component/UserBlogs";
-import { SearchBar } from "@/components/search/SearchBar";
 
 const UserCenter = () => {
     const [index, setIndex] = useState(1);

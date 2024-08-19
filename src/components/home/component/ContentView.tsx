@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import CardComponent from "../../components/home/ItemCard/CardComponent";
 import { debounce } from "next/dist/server/utils";
 import { useQuery } from "@tanstack/react-query";
 import { list } from "postcss";
-import { getCardNumber } from "./function/getCardNumber";
 import { BlogItem, BlogsInfo } from "@/api/services/blog/model";
+import { getCardNumber } from "../function/getCardNumber";
+import CardComponent from "./ItemCard/CardComponent";
 
 const ContentView = ({ data }: { data: BlogItem[] }) => {
     const settings = {

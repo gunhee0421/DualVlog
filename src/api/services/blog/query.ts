@@ -14,10 +14,10 @@ export const blogQueryOptions = {
     }),
 }
 
-export const useBlogListInfoQuery = () : UseQueryResult<BlogsInfo<BlogItem>, Error> => {
+export const useBlogListInfoQuery = () : UseQueryResult<BlogsInfo<BlogItem[]>, Error> => {
     const queryClient = useQueryClient()
 
-    return useQuery<BlogsInfo<BlogItem>, Error>({
+    return useQuery<BlogsInfo<BlogItem[]>, Error>({
         ...blogQueryOptions.blogListInfo(queryClient)
     })
 }

@@ -186,7 +186,11 @@ export const blog = [
                         {
                             type: "paragraph",
                             content: "# Markdown Example\nThis is **bold text** and *italic text*.\nHere is a [link](https://example.com) to a website."
-                        }
+                        },
+                        {
+                            type: "paragraph",
+                            content: "This is **bold text**, and this is *italic text*. You can also create [links](https://example.com).\n- Item 1\n- Item 2\n- Subitem 2.1\n- Subitem 2.2\n > This is a blockquote. It's great for highlighting quotes or important information."
+                        },
                     ]
                 },
             })

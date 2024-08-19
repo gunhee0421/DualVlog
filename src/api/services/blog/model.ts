@@ -13,7 +13,7 @@ export interface BlogItem {
 }
 export interface BlogsInfo<T> {
     state: number;
-    result: T | null;
+    result:  T | null;
 }
 export interface InsertBlogItem {
     id: UUID,
