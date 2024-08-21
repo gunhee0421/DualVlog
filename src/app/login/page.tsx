@@ -1,3 +1,7 @@
+"use client";
+
+import { InsertBlogItem } from "@/api/services/blog/model";
+import { useAddBlogMutation } from "@/api/services/blog/query";
 import LoginButton from "@/components/login/loginButton";
 
 const LoginPage = () => {
@@ -32,4 +36,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-``;

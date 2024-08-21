@@ -32,7 +32,7 @@ export interface Paragraph {
 export interface CodeBlock {
     type: string,
     language: string,
-    link: [[number, number[]]],
+    link: [number, number[]][],
     content: {
         code: string,
         text: string
