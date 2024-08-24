@@ -13,7 +13,7 @@ export interface BlogItem {
 }
 export interface BlogsInfo<T> {
     state: number;
-    result: T | null;
+    result:  T | null;
 }
 export interface InsertBlogItem {
     id: UUID,
@@ -32,7 +32,7 @@ export interface Paragraph {
 export interface CodeBlock {
     type: string,
     language: string,
-    link: [[number, number[]]],
+    link: [number, number[]][],
     content: {
         code: string,
         text: string

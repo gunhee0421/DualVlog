@@ -23,7 +23,7 @@ const MiddleDropDown: React.FC<MiddleDropDownProps> = ({ time, setTime }) => {
 
     const selectedKey =
         Object.keys(timeValues).find(
-            (key) => timeValues[key as keyof typeof timeValues] === time,
+            (key) => timeValues[key as keyof typeof timeValues] === time
         ) || "";
 
     return (
@@ -35,10 +35,10 @@ const MiddleDropDown: React.FC<MiddleDropDownProps> = ({ time, setTime }) => {
                             time === 1
                                 ? 0
                                 : time === 7
-                                  ? 1
-                                  : time === 30
-                                    ? 2
-                                    : 3
+                                ? 1
+                                : time === 30
+                                ? 2
+                                : 3
                         ]
                     }
                     <svg

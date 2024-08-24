@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import UserLogo from "../component/UserLogo";
-import { UserResponse } from "@/lib/Lib";
 import UserStackLogo from "../component/UserStackLogo";
 import Link from "next/link";
+import { UserInfo } from "@/api/services/user/model";
 
 const UserLogoBar = () => {
-    const { data } = useQuery<UserResponse>({
+    const { data } = useQuery<UserInfo>({
         queryKey: ["userInfo"],
     });
 
