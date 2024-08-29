@@ -1,11 +1,21 @@
-import {configureStore} from "@reduxjs/toolkit";
-import textReducer from "../redux/slice/auth-slice";
+import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers } from "redux";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import loginReducer from "./slice/loginSlice";
 
-// redux의 데이터를 정의하는 부분
+
 export const store = configureStore({
     reducer: {
-        data: textReducer,
+        login: loginReducer,
     },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: ['**'],
+                ignoredPaths: ['register'],
+            },
+        }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
