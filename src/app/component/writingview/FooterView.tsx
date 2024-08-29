@@ -1,17 +1,15 @@
-import Link from "next/link";
+
 import { useEffect, useRef } from "react";
 import React, { useState } from 'react';
 import '../../../app/style/globals.css';
 
-interface quit{
+interface FooterViewProps {
     onQuit: () => void;
-}
-interface Save{
     onSave: () => void;
+    onLink: () => void;
 }
-type FooterViewProps = quit & Save;
 
-const FooterView: React.FC<FooterViewProps> = ({ onQuit, onSave }) => {
+const FooterView: React.FC<FooterViewProps> = ({ onQuit, onSave, onLink }) => {
     
     return (    
         <div className="elkoqa">
@@ -20,7 +18,7 @@ const FooterView: React.FC<FooterViewProps> = ({ onQuit, onSave }) => {
                     <span onClick={onQuit}>나가기</span>
                 </button>
                 <div className="exzoUl">
-                    <button color="transparent" className="sc-jrQzAO icODNG sc-gIDmLj cAMIzw">연결</button>
+                    <button onClick={onLink} color="transparent" className="sc-jrQzAO icODNG sc-gIDmLj cAMIzw">연결</button>
                     <button onClick={onSave} color="teal" className="sc-jrQzAO jYsOEX sc-gIDmLj cAMIzw">출간하기</button></div>
             </div>
         </div>

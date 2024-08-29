@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
-import  getPtageText  from '../link/text/getPtageText';
-import getPtageCode from '../link/code/getPtageCode';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
@@ -10,12 +8,11 @@ const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 interface Editor1Props {
     value: string;
     onChange: (content: string) => void;
-    select: string;
+    select: (lineNumbers: number) => void;
 }
 
 const Text : React.FC<Editor1Props> = ({ value, onChange, select }) => {
-    const [selectText, setSelectText] = useState<string>('');
-    const [renderedText, setRenderedText] = useState<JSX.Element[]>([]);
+    const [lineNumber, setLineNumber] = useState<number>();
     const quill = useRef<any>(null);
     useEffect(() => {
         if (quill.current) {
@@ -45,45 +42,51 @@ const Text : React.FC<Editor1Props> = ({ value, onChange, select }) => {
             }
         }
     }, []);
-    const handleSelectionChange = () => {
-        if (quill.current) {
-            const quillInstance = (quill.current.querySelector('.ql-container') as any).__quill;
-            const selection = quillInstance.getSelection();
+    const handleSelectChange = () => {
+        // if (quill.current) {
+        //     const quillI = (quill.current.querySelector('.ql-container') as any).__quill;
+        //     const selectt = quillI.getSelection();
 
-            if (selection && selection.length > 0) {
-                const selectedText = quillInstance.getText(selection.index, selection.length);
-                setSelectText(selectedText);
-            } else {
-                setSelectText('');
+        //     if (selectt && selectt.length > 0) {
+        //         const selectedText = quillI.getText(selectt.index, selectt.length);
+        //         setSelectText(selectedText);
+        //     } else {
+        //         setSelectText('');
+        //     }
+        // }
+        if (quill.current) {
+            const quillI = (quill.current.querySelector('.ql-container') as any).__quill;
+            const selectt = quillI.getSelection();
+
+            if (selectt && selectt.index !== null) {
+                const sLine = quillI.getLine(selectt.index)[0];
+                const eLine = quillI.getLine(selectt.index+selectt.length - 1)[0];
+
+                const sNode = sLine.domNode;
+                const eNode = eLine.domNode;
+
+                const line = Array.from(sNode.parentNode.children);
+                const sLineIndex = line.indexOf(sNode)+1;
+                // console.log(sLineIndex)
+                // const eLineIndex = line.indexOf(eNode)+1;
+
+                // const selectLineN = [];
+                // for (let i = sLineIndex; i <= eLineIndex; i++) {
+                //     selectLineN.push(i);
+                // }
+
+                setLineNumber(sLineIndex);
+                select(sLineIndex)
             }
         }
     };
 
     const handleClick = () => {
-        if (quill.current) {
-            const quillInstance = (quill.current.querySelector('.ql-container') as any).__quill;
-            const selection = quillInstance.getSelection();
-            if (selection && selection.length > 0) {
-                const selectedText = quillInstance.getText(selection.index, selection.length);
-
-                const wrappedText = `<Like class="custom-tag">${selectedText}</Like>`;
-
-
-                const Content = quillInstance.root.innerHTML;
-
-
-                const bSelection = Content.slice(0, Content.indexOf(selectedText));
-                const aSelection = Content.slice(Content.indexOf(selectedText) + selectedText.length);
-                const newContent = bSelection + wrappedText + aSelection;
-                // console.log(bSelection);
-                console.log(newContent);
-                onChange(newContent);
-            }
-        }
+        
     };
 
     return (
-        <div ref={quill} style={{ height: '85%', marginBottom: '6%' }} onMouseUp={handleSelectionChange}>
+        <div ref={quill} style={{ height: '85%', marginBottom: '6%' }} onMouseUp={handleSelectChange}>
             <ReactQuill
                 value={value}
                 onChange={onChange}
@@ -101,8 +104,6 @@ const Text : React.FC<Editor1Props> = ({ value, onChange, select }) => {
                 }}
                 theme="snow"
             />
-            <button onClick={handleClick}>link Text</button>
-            {value}
         </div>
     );
 };
