@@ -1,9 +1,9 @@
-import { UUID } from "crypto";
-import { BlogItem } from "../blog/model";
+import { UUID } from "crypto"
+import { BlogItem } from "../blog/model"
 
 export interface LoginButtonProps {
-    service: string;
-    imageUrl: string;
-    altText: string;
-    bgColor: string;
+  service: string
+  imageUrl: string
+  altText: string
+  bgColor: string
 }

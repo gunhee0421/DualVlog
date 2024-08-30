@@ -1,13 +1,18 @@
-"use client";
+"use client"
 
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
-import { useState } from "react";
-import { stat } from "fs";
-import HomePage from "@/components/home/HomePage";
+import { useDispatch, useSelector } from "react-redux"
+import { RootState } from "@/redux/store"
+import { useState } from "react"
+import { stat } from "fs"
+import HomePage from "@/components/home/HomePage"
+import { useRouter } from "next/navigation"
 
-const Home = () => {
-  return <HomePage />;
-};
+const Main = () => {
+  const router = useRouter()
 
-export default Home;
+  router.push("/home")
+
+  return <div></div>
+}
+
+export default Main

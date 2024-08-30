@@ -1,15 +1,24 @@
-"use client";
+"use client"
 
-import UserCenter from "@/components/user/page/UserCenter";
-import UserTopNavigation from "@/components/user/page/userTopNavigation";
+import UserCenter from "@/components/user/page/UserCenter"
+import UserTopNavigation from "@/components/user/page/userTopNavigation"
+import { useQuery } from "@tanstack/react-query"
+import { useRouter } from "next/navigation"
 
 const UserPage = () => {
-    return (
-        <div className="flex flex-col bg-gray-50 h-screen items-center">
-            <UserTopNavigation />
-            <UserCenter />
-        </div>
-    );
-};
+  const { data } = useQuery({ queryKey: ["userInfo"] })
+  const router = useRouter()
 
-export default UserPage;
+  if (!data) {
+    router.push("/home")
+  }
+
+  return (
+    <div className="flex flex-col bg-gray-50 h-screen items-center">
+      <UserTopNavigation />
+      <UserCenter />
+    </div>
+  )
+}
+
+export default UserPage

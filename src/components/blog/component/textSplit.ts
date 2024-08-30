@@ -1,7 +1,7 @@
-import React from "react";
+import React from "react"
 
-export const textSplit = (text:string) => {
-    const lines = text.split('\n');
+export const textSplit = (text: string) => {
+  const lines = text.split("\n")
 
-    return lines;
+  return lines
 }

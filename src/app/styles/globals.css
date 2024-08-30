@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.markdown-body{
-    @apply px-[200px]
+.markdown-body {
+  @apply px-[200px];
 }
