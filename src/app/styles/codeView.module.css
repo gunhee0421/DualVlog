@@ -6,12 +6,14 @@
   background-color: #1e1e1e;
   border-radius: 10px;
   max-height: 40vh;
+  overflow-y: auto;
+  position: relative;
 }
 .languageLabel {
   margin-top: 0.5rem;
   margin-left: 0.5rem;
   font-size: 0.75rem; /* text-xs */
-  color: #9ca3af; /* text-gray-400 */
+  color: #9ca3af; /*text-gray-400 */
 }
 .syntaxHighlight {
   width: 100%;
@@ -25,6 +27,6 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-å .scroll_container::-webkit-scrollbar {
+.scroll_container::-webkit-scrollbar {
   display: none;
 }

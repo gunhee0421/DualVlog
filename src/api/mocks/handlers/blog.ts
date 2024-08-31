@@ -161,7 +161,7 @@ const blogs = [
       },
       {
         type: "codeblock",
-        language: "JAVASCRPIT",
+        language: "javascript",
         link: [
           [1, [1, 2, 3, 4]],
           [5, [15, 16, 17, 18, 19]],
@@ -199,7 +199,7 @@ const blogs = [
       },
       {
         type: "codeblock",
-        language: "JAVASCRPIT",
+        language: "javascript",
         link: [
           [1, [1, 2, 3, 4]],
           [5, [15, 16, 17, 18, 19]],

@@ -3,7 +3,10 @@ import React, { useEffect, useRef, useState } from "react"
 import { textSplit } from "./textSplit"
 import styles from "@/app/styles/codeView.module.css"
 
-export const TextView: React.FC<{ props: CodeBlock }> = ({ props }) => {
+export const TextView: React.FC<{
+  props: CodeBlock
+  onLineFocus: (focusedLines: number[]) => void
+}> = ({ props, onLineFocus }) => {
   const lines = textSplit(props.content.text)
 
   const textContainerRef = useRef<HTMLDivElement>(null)
@@ -34,23 +37,11 @@ export const TextView: React.FC<{ props: CodeBlock }> = ({ props }) => {
         }
       }
 
-      if (newFocusedLine !== null) {
+      if (newFocusedLine !== null && newFocusedLine !== focusedLine) {
         setFocusedLine(newFocusedLine)
-
         const [_, codeLines] =
           props.link.find(([textLine]) => textLine === newFocusedLine) || []
-        if (codeLines && codeLines.length > 0) {
-          const firstCodeLineElement = document.getElementById(
-            `code-${codeLines[0]}`,
-          )
-
-          if (firstCodeLineElement) {
-            firstCodeLineElement.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            })
-          }
-        }
+        onLineFocus(codeLines || [])
       }
     }
 

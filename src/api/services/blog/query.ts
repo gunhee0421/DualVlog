@@ -16,7 +16,7 @@ export const blogQueryOptions = {
     queryFn: () => blogService.blogInfo(client),
   }),
   blogInfo: (client: QueryClient, id: string) => ({
-    queryKey: ["blogInfo", id],
+    queryKey: ["blogInfo"],
     queryFn: () => blogService.getBlog(client, id),
   }),
   blogAdd: (client: QueryClient) => ({

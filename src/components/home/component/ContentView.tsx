@@ -8,6 +8,7 @@ import { list } from "postcss"
 import { BlogItem, BlogsInfo } from "@/api/services/blog/model"
 import { getCardNumber } from "../function/getCardNumber"
 import CardComponent from "./ItemCard/CardComponent"
+import { NonBlogPage } from "./NonBlogPage"
 
 const ContentView = ({ data }: { data: BlogItem[] }) => {
   const settings = {
@@ -19,7 +20,6 @@ const ContentView = ({ data }: { data: BlogItem[] }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
   }
-
   const [groupedData, setGroupedData] = useState<BlogItem[][]>([])
 
   useEffect(() => {

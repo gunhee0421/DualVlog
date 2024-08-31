@@ -13,6 +13,7 @@ import {
 } from "@/api/services/blog/query"
 import { BlogItem } from "@/api/services/blog/model"
 import { filterAndSortIndex, filterAndSortTime } from "./function/filterAndSort"
+import { NonBlogPage } from "./component/NonBlogPage"
 
 const HomePage = () => {
   const [index, setIndex] = useState<number>(1)
@@ -33,11 +34,6 @@ const HomePage = () => {
     setBlog(filteredAndSortedBlog)
   }, [filteredAndSortedBlog, blogResponse.data?.result])
 
-  useEffect(() => {
-    console.log(blog)
-    console.log(blogResponse.data)
-  }, [blog, blogResponse])
-
   return (
     <div className="flex flex-col px-24 bg-gray-50 h-screen">
       <TopNavigation />
@@ -47,7 +43,7 @@ const HomePage = () => {
         time={time}
         setTime={setTime}
       />
-      <ContentView data={blog} />
+      {blog.length != 0 ? <ContentView data={blog} /> : <NonBlogPage />}
     </div>
   )
 }
