@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .markdown-body {
-  @apply px-[200px];
+  @apply pr-[300px] pl-10;
 }

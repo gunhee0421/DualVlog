@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import { MSWComponent } from "@/hooks/MSWComponet"
 import ReactQueryProviders from "@/hooks/ReactQueryProviders"
+import { Toaster } from "sonner"
 
 export const metadata = {
   title: "Next.js",
@@ -21,7 +22,10 @@ export default function RootLayout({
       <body>
         <MSWComponent>
           <ReactQueryProviders>
-            <ReduxProvider>{children}</ReduxProvider>
+            <ReduxProvider>
+              <Toaster />
+              {children}
+            </ReduxProvider>
           </ReactQueryProviders>
         </MSWComponent>
       </body>

@@ -12,7 +12,7 @@ const UserLogoBar = () => {
   return (
     <div className="flex flex-row items-center px-[30px] justify-between">
       <div className="flex items-center">
-        <UserLogo />
+        <UserLogo size={135} />
         <h1 className=" text-[28px] font-pretendard font-extrabold px-[20px] pr-[100px]">
           {data?.result?.name}
         </h1>

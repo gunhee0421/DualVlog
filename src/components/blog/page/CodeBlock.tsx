@@ -5,7 +5,7 @@ import { CodeView } from "../component/CodeView"
 
 export const Code_Block: React.FC<{ props: CodeBlock }> = ({ props }) => {
   const [focusedLines, setFocusedLines] = useState<number[]>(
-    props.link[0][1] || [],
+    props.link[0][1] || []
   )
 
   return (

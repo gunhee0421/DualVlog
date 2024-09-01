@@ -35,7 +35,7 @@ const HomePage = () => {
   }, [filteredAndSortedBlog, blogResponse.data?.result])
 
   return (
-    <div className="flex flex-col px-24 bg-gray-50 h-screen">
+    <div className="flex flex-col px-24 bg-gray-50 h-full">
       <TopNavigation />
       <MiddleNavigation
         index={index}

@@ -152,7 +152,15 @@ const blogs = [
     logo: "/images/home/logo.png",
     name: "전반숙",
     like: 152,
-    comment: 39,
+    comment: [{
+      id: "0bfac118-02f2-4e34-8f38-2b91b5c0a2b1",
+      user: {
+        id: "0bfac118-02f2-4e34-8f38-2b91b5c0b2a8",
+        name: "조원희",
+      },
+      content: "댓글 test1",
+      createdAt: "2024-08-08T12:34:56.789Z"
+    }],
     content: [
       {
         type: "paragraph",

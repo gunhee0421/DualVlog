@@ -1,11 +1,20 @@
 import { useAlarmInfoQuery } from "@/api/services/alarm/query"
 import React, { useState, useEffect } from "react"
 import { AlarmItem } from "./AlarmItem"
+import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 
 export const AlarmModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [visible, setVisible] = useState(false)
 
-  const { data } = useAlarmInfoQuery()
+  const { data, isError } = useAlarmInfoQuery()
+
+  useEffect(() => {
+    if (isError) {
+      onClose()
+      toast("로그인을 진행해 주세요.", { duration: 2000 })
+    }
+  }, [])
 
   useEffect(() => {
     setTimeout(() => setVisible(true), 0)

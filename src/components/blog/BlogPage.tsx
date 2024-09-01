@@ -17,6 +17,7 @@ import { Code_Block } from "@/components/blog/page/CodeBlock"
 import { UUID } from "crypto"
 import { useParams } from "next/navigation"
 import { useState } from "react"
+import { Bottom } from "./page/Bottom"
 
 const BlogPage = () => {
   const { id } = useParams() as { id: UUID }
@@ -30,7 +31,7 @@ const BlogPage = () => {
       onClick={() => setIsClick(false)}
     >
       {data?.result && (
-        <div className="w-[60%] h-full m-auto py-[30px] px-[20px] bg-white">
+        <div className="w-[80%] h-full m-auto py-[30px] px-[20px] bg-white">
           <Header id={id} click={isClick} setClick={setIsClick} />
           {data?.result?.content?.map((item, index) => {
             if (isParagraph(item)) {
@@ -43,6 +44,7 @@ const BlogPage = () => {
               return <Code_Block props={item as CodeBlock} key={index} />
             }
           })}
+          <Bottom blog={data?.result} />
         </div>
       )}
     </div>

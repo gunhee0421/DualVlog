@@ -4,7 +4,7 @@ import { Info } from "../component/User"
 import { BlogItem, InsertBlogItem } from "@/api/services/blog/model"
 import { UUID } from "crypto"
 import React from "react"
-import { TopModal } from "../component/blogModal"
+import { BlogModal } from "../component/blogModal"
 
 export const Header: React.FC<{
   id: UUID
@@ -14,7 +14,7 @@ export const Header: React.FC<{
   const { isLoading, data, isError } = useBlogQuery(id)
 
   return (
-    <div className="px-[150px]">
+    <div className="px-2">
       <Title data={data?.result as InsertBlogItem} />
       <div className="flex justify-between">
         <Info data={data?.result as InsertBlogItem} />
@@ -42,7 +42,7 @@ export const Header: React.FC<{
               </clipPath>
             </defs>
           </svg>
-          {click && <TopModal id={id} />}
+          {click && <BlogModal blog={data?.result || null} />}
         </div>
       </div>
       <hr className="my-[15px]"></hr>

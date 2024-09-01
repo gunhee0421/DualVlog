@@ -12,6 +12,7 @@ import TopLog from "./topLog"
 import Login from "./Login"
 import { SearchModal } from "@/components/search/components/SearchModal"
 import { AlarmModal } from "@/components/alarm/AlarmModal"
+import { useRouter } from "next/navigation"
 
 const TopNavigation = () => {
   const token = useSelector((state: RootState) => state.login.accessToken)

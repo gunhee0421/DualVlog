@@ -1,9 +1,9 @@
-import { UserResponse } from "@/lib/Lib"
+import { UserInfo } from "@/api/services/user/model"
 import { useQuery } from "@tanstack/react-query"
 import Image from "next/image"
 
-const UserLogo = () => {
-  const { data } = useQuery<UserResponse>({
+const UserLogo: React.FC<{ size: number }> = ({ size }) => {
+  const { data } = useQuery<UserInfo>({
     queryKey: ["userInfo"],
   })
 
@@ -11,8 +11,8 @@ const UserLogo = () => {
     return (
       <Image
         src={"/images/user/userlogo.png"}
-        width={100}
-        height={100}
+        width={size}
+        height={size}
         alt="error"
       />
     )
@@ -21,8 +21,8 @@ const UserLogo = () => {
   return (
     <Image
       src={`${data?.result?.userlogo}`}
-      width={134}
-      height={134}
+      width={size}
+      height={size}
       alt="error"
     />
   )

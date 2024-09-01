@@ -20,7 +20,9 @@ export const SearchModal: React.FC<{
   return (
     <div
       className={`fixed inset-0 z-50 flex justify-center transition-opacity duration-2000 ease-in-out font-pretendard ${
-        visible ? "opacity-100 bg-gray-400 bg-opacity-50" : "opacity-0"
+        visible
+          ? "opacity-100 bg-gray-800 bg-opacity-50 backdrop-blur-sm"
+          : "opacity-0"
       }`}
       onClick={handleClose}
     >

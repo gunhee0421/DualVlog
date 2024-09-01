@@ -1,12 +1,17 @@
 import { useUserInfoQuery } from "@/api/services/user/query"
+import { AlarmModal } from "@/components/alarm/AlarmModal"
 import { useQuery } from "@tanstack/react-query"
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 
 const UserTopNavigation = () => {
+  const [alarm, setAlarm] = useState(false)
+  const [edit, setEdit] = useState(false)
+
   return (
     <div className="flex w-full justify-end p-5">
-      <Link href="/alarm">
+      <div onClick={() => setAlarm(true)}>
         <svg
           width="55"
           height="50"
@@ -19,7 +24,27 @@ const UserTopNavigation = () => {
             fill="#212529"
           />
         </svg>
-      </Link>
+      </div>
+      <div
+        className="flex justify-center items-center"
+        onClick={() => setEdit(true)}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          className="size-8"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"
+          />
+        </svg>
+      </div>
+      {alarm && <AlarmModal onClose={() => setEdit(false)} />}
     </div>
   )
 }

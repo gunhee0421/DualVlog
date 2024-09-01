@@ -1,4 +1,5 @@
 import { UUID } from "crypto"
+import { UserInfo, UserItem } from "../user/model"
 
 export interface BlogItem {
   id: UUID
@@ -20,10 +21,16 @@ export interface InsertBlogItem {
   title: string
   content: (Paragraph | CodeBlock)[]
   createdAt: string
-  comment: number
+  comment: Comment[] | []
   like: number
   logo: string
   name: string
+}
+export interface Comment {
+  id: UUID,
+  user: UserItem,
+  content: string,
+  createdAt: string
 }
 export interface Paragraph {
   type: string
