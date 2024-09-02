@@ -1,10 +1,16 @@
-import React, { FC, useState, useEffect } from "react"
+import { BlogItem, BlogsInfo } from "@/api/services/blog/model"
+import { useBlogListInfoQuery } from "@/api/services/blog/query"
+import { useRouter } from "next/navigation"
+import React, { FC, useState, useEffect, FormEvent } from "react"
 
 export const SearchModal: React.FC<{
   close: boolean
   onClose: () => void
 }> = ({ close, onClose }) => {
+  const router = useRouter()
   const [visible, setVisible] = useState(false)
+  const [value, setValue] = useState("")
+  const [filteredBlogs, setFilteredBlogs] = useState<BlogItem[]>([])
 
   useEffect(() => {
     setTimeout(() => setVisible(true), 0)
@@ -15,6 +21,23 @@ export const SearchModal: React.FC<{
     setTimeout(() => {
       onClose()
     }, 500)
+  }
+
+  const blogList = useBlogListInfoQuery()
+
+  const blogEqualText = (text: string) => {
+    if (!blogList.data?.result) return []
+    return blogList.data.result.filter((item) => item.title.includes(text))
+  }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const searchText = e.target.value
+    setValue(searchText)
+    if (searchText.length > 0) setFilteredBlogs(blogEqualText(searchText))
+  }
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (value.length > 0) router.push(`blog/${value}`)
   }
 
   return (
@@ -32,11 +55,28 @@ export const SearchModal: React.FC<{
         }`}
         onClick={(e) => e.stopPropagation()}
       >
-        <input
-          type="text"
-          placeholder="포스트 검색..."
-          className="w-full p-2 border border-gray-300 rounded"
-        />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={value}
+            placeholder="포스트 검색..."
+            className="w-full p-2 border border-gray-300 rounded"
+            onChange={handleInputChange}
+          />
+        </form>
+        {filteredBlogs.length > 0 && (
+          <ul className="mt-4">
+            {filteredBlogs.map((blog) => (
+              <li
+                key={blog.id}
+                className="p-2 border-b border-gray-300 cursor-pointer"
+                onClick={() => router.push(`blog/${blog.id}`)}
+              >
+                {blog.title}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   )

@@ -3,11 +3,14 @@ import { AlarmModal } from "@/components/alarm/AlarmModal"
 import { useQuery } from "@tanstack/react-query"
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 const UserTopNavigation = () => {
   const [alarm, setAlarm] = useState(false)
-  const [edit, setEdit] = useState(false)
+  const router = useRouter()
+
+  const userInfo = useUserInfoQuery()
 
   return (
     <div className="flex w-full justify-end p-5">
@@ -27,7 +30,7 @@ const UserTopNavigation = () => {
       </div>
       <div
         className="flex justify-center items-center"
-        onClick={() => setEdit(true)}
+        onClick={() => router.push(`${userInfo.data?.result.id}/edit`)}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +47,6 @@ const UserTopNavigation = () => {
           />
         </svg>
       </div>
-      {alarm && <AlarmModal onClose={() => setEdit(false)} />}
     </div>
   )
 }

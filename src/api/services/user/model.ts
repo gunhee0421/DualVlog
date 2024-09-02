@@ -2,7 +2,7 @@ import { UUID } from "crypto"
 import { BlogItem } from "../blog/model"
 
 export interface UserItem {
-  id: UUID
+  id: string
   email: string
   name: string
   userlogo: string

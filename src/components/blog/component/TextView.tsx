@@ -64,7 +64,7 @@ export const TextView: React.FC<{
           id={`text-${idx + 1}`}
           className={`py-[10vh] my-[15%] transition-all duration-3000 ${
             focusedLine === idx + 1
-              ? "border-l-[12px] border-solid border-[#7FC9FF] pl-2 rounded bg-white"
+              ? "border-l-[12px] border-solid border-[#7FC9FF] pl-2 rounded bg-white font-semibold"
               : ""
           }`}
         >

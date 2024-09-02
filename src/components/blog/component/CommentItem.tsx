@@ -21,7 +21,7 @@ export const CommentItem: React.FC<{ comment: Comment; visible: boolean }> = ({
         {formatDate(comment.createdAt)}
       </div>
       <div className="pl-7 pt-4">{comment.content}</div>
-      <hr className="my-3"></hr>
+      <hr className="my-3 mt-10"></hr>
     </div>
   )
 }

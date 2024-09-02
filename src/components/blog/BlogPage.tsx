@@ -18,19 +18,23 @@ import { UUID } from "crypto"
 import { useParams } from "next/navigation"
 import { useState } from "react"
 import { Bottom } from "./page/Bottom"
+import { NonBlogPage } from "../home/component/NonBlogPage"
 
 const BlogPage = () => {
   const { id } = useParams() as { id: UUID }
   const [isClick, setIsClick] = useState(false)
 
-  const { isLoading, data, isError } = useBlogQuery(id)
+  const { isLoading, data, isError } = useBlogQuery(id, {
+    queryKey: ["blogInfo", id],
+    refetchOnMount: true,
+  })
 
   return (
     <div
       className="w-full h-full overflow-y-auto font-s bg-gray-100"
       onClick={() => setIsClick(false)}
     >
-      {data?.result && (
+      {data?.result ? (
         <div className="w-[80%] h-full m-auto py-[30px] px-[20px] bg-white">
           <Header id={id} click={isClick} setClick={setIsClick} />
           {data?.result?.content?.map((item, index) => {
@@ -46,6 +50,8 @@ const BlogPage = () => {
           })}
           <Bottom blog={data?.result} />
         </div>
+      ) : (
+        <NonBlogPage />
       )}
     </div>
   )

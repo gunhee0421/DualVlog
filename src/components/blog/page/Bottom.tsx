@@ -43,24 +43,43 @@ export const Bottom: React.FC<{ blog: InsertBlogItem }> = ({ blog }) => {
           )}
         </div>
         <div
-          className="flex items-center font-pretendard font-thin border-1 mt-10 w-fit py-2 pl-7 pr-3 mb-8 mr-3 "
+          className={`flex items-center font-pretendard font-thin border-1 mt-10 w-fit py-2 pl-7 pr-3 mb-8 mr-3 ${
+            comment ? "text-sky-600 border-sky-600 " : ""
+          }`}
           onClick={() => setComment(!comment)}
         >
           <span className="pr-2">댓글</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="gray"
-            className="size-5"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
-            />
-          </svg>
+          {comment ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="skyblue"
+              className="size-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="gray"
+              className="size-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+              />
+            </svg>
+          )}
         </div>
       </div>
       {comment &&
