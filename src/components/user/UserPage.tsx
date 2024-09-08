@@ -10,7 +10,7 @@ const UserPage = () => {
   const router = useRouter()
 
   if (!data) {
-    router.push("/home")
+    router.push("/login")
   }
 
   return (
