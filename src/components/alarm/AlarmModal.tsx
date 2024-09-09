@@ -36,7 +36,7 @@ export const AlarmModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`bg-white p-6 h-full shadow-lg w-[25%] transform transition-transform duration-2000 ease-in-out ${
+        className={` cursor-pointer bg-white p-6 h-full shadow-lg w-[25%] transform transition-transform duration-2000 ease-in-out ${
           visible ? "translate-y-0" : "-translate-y-10"
         }`}
       >

@@ -20,14 +20,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <MSWComponent>
+        {process.env.NEXT_PUBLIC_MSW === "enable" ? (
+          <MSWComponent>
+            <ReactQueryProviders>
+              <ReduxProvider>
+                <Toaster />
+                {children}
+              </ReduxProvider>
+            </ReactQueryProviders>
+          </MSWComponent>
+        ) : (
           <ReactQueryProviders>
             <ReduxProvider>
               <Toaster />
               {children}
             </ReduxProvider>
           </ReactQueryProviders>
-        </MSWComponent>
+        )}
       </body>
     </html>
   )

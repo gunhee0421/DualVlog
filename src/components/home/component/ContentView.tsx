@@ -9,11 +9,12 @@ import { BlogItem, BlogsInfo } from "@/api/services/blog/model"
 import { getCardNumber } from "../function/getCardNumber"
 import CardComponent from "./ItemCard/CardComponent"
 import { NonBlogPage } from "./NonBlogPage"
+import { blob } from "stream/consumers"
 
 const ContentView = ({ data }: { data: BlogItem[] }) => {
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: data.length > 10 ? true : false,
     arrows: false,
     speed: 500,
     centerMode: true,
@@ -39,11 +40,11 @@ const ContentView = ({ data }: { data: BlogItem[] }) => {
   }, [data])
 
   return (
-    <div className="w-full h-screen bg-white">
+    <div className="w-full h-screen min-h-[80vh] bg-white">
       <Slider {...settings}>
         {groupedData.map((group, index) => (
-          <div key={index} className="pt-3">
-            <div className="flex flex-wrap justify-center items-center w-full">
+          <div key={index} className="pt-3 h-full">
+            <div className="flex flex-wrap justify-center items-center w-full h-full">
               {group.map((item, itemIndex) => (
                 <div key={itemIndex} className="h-1/2">
                   <CardComponent props={item} />
