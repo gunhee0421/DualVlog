@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        domains: ["cdn.simpleicons.org"],
-        dangerouslyAllowSVG: true,
-    },
-};
+  reactStrictMode: false,
+  images: {
+    domains: ["cdn.simpleicons.org"],
+    dangerouslyAllowSVG: true,
+  },
+}
 
-export default nextConfig;
+export default nextConfig

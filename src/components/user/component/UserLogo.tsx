@@ -1,30 +1,30 @@
-import { UserResponse } from "@/lib/Lib";
-import { useQuery } from "@tanstack/react-query";
-import Image from "next/image";
+import { UserInfo } from "@/api/services/user/model"
+import { useQuery } from "@tanstack/react-query"
+import Image from "next/image"
 
-const UserLogo = () => {
-    const { data } = useQuery<UserResponse>({
-        queryKey: ["userInfo"],
-    });
+const UserLogo: React.FC<{ size: number }> = ({ size }) => {
+  const { data } = useQuery<UserInfo>({
+    queryKey: ["userInfo"],
+  })
 
-    if (!data?.result.userlogo) {
-        return (
-            <Image
-                src={"/images/user/userlogo.png"}
-                width={100}
-                height={100}
-                alt="error"
-            />
-        );
-    }
-
+  if (!data?.result.userlogo) {
     return (
-        <Image
-            src={`${data?.result?.userlogo}`}
-            width={134}
-            height={134}
-            alt="error"
-        />
-    );
-};
-export default UserLogo;
+      <Image
+        src={"/images/user/userlogo.png"}
+        width={size}
+        height={size}
+        alt="error"
+      />
+    )
+  }
+
+  return (
+    <Image
+      src={`${data?.result?.userlogo}`}
+      width={size}
+      height={size}
+      alt="error"
+    />
+  )
+}
+export default UserLogo

@@ -1,53 +1,56 @@
 {
-    "name": "blog",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "dev": "next dev",
-        "build": "next build",
-        "start": "next start",
-        "lint": "next lint"
-    },
-    "dependencies": {
-        "@nextui-org/dropdown": "^2.1.29",
-        "@nextui-org/system": "^2.2.5",
-        "@nextui-org/theme": "^2.2.9",
-        "@reduxjs/toolkit": "^2.2.6",
-        "@tanstack/react-query": "^5.51.23",
-        "@tanstack/react-query-devtools": "^5.51.23",
-        "axios": "^1.7.3",
-        "framer-motion": "^11.3.8",
-        "github-markdown-css": "^5.6.1",
-        "next": "14.2.4",
-        "react": "^18",
-        "react-dom": "^18",
-        "react-markdown": "^9.0.1",
-        "react-redux": "^9.1.2",
-        "react-slick": "^0.30.2",
-        "react-syntax-highlighter": "^15.5.0",
-        "redux-persist": "^6.0.0",
-        "remark-gfm": "^4.0.0",
-        "slick-carousel": "^1.8.1",
-        "swiper": "^11.1.5"
-    },
-    "devDependencies": {
-        "@types/axios": "^0.14.0",
-        "@types/node": "^20",
-        "@types/react": "^18",
-        "@types/react-dom": "^18",
-        "@types/react-slick": "^0.23.13",
-        "@types/react-syntax-highlighter": "^15.5.13",
-        "eslint": "^8",
-        "eslint-config-next": "14.2.4",
-        "eslint-config-prettier": "^9.1.0",
-        "msw": "^2.3.5",
-        "postcss": "^8",
-        "tailwindcss": "^3.4.1",
-        "typescript": "^5"
-    },
-    "msw": {
-        "workerDirectory": [
-            "public"
-        ]
-    }
+  "name": "blog",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npx kill-port 3000 && next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@nextui-org/dropdown": "^2.1.29",
+    "@nextui-org/system": "^2.2.5",
+    "@nextui-org/theme": "^2.2.9",
+    "@reduxjs/toolkit": "^2.2.6",
+    "@tanstack/react-query": "^5.51.23",
+    "@tanstack/react-query-devtools": "^5.51.23",
+    "axios": "^1.7.3",
+    "eslint-config-airbnb": "^19.0.4",
+    "framer-motion": "^11.3.8",
+    "github-markdown-css": "^5.6.1",
+    "next": "14.2.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.53.0",
+    "react-markdown": "^9.0.1",
+    "react-redux": "^9.1.2",
+    "react-slick": "^0.30.2",
+    "react-syntax-highlighter": "^15.5.0",
+    "redux-persist": "^6.0.0",
+    "remark-gfm": "^4.0.0",
+    "slick-carousel": "^1.8.1",
+    "sonner": "^1.5.0",
+    "swiper": "^11.1.5"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-slick": "^0.23.13",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
+    "eslint-config-prettier": "^9.1.0",
+    "msw": "^2.3.5",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
 }

@@ -1,7 +1,7 @@
-import UserPage from "@/components/user/UserPage";
+import UserPage from "@/components/user/UserPage"
 
 const Page = () => {
-    return <UserPage />;
-};
+  return <UserPage />
+}
 
-export default Page;
+export default Page
