@@ -14,7 +14,7 @@ import { NonBlogPage } from "./component/NonBlogPage"
 
 const HomePage = () => {
   const [index, setIndex] = useState<number>(1)
-  const [time, setTime] = useState<number>(30)
+  const [time, setTime] = useState<number>(365)
   const [blog, setBlog] = useState<BlogItem[] | []>([])
 
   const blogResponse = useBlogListInfoQuery()

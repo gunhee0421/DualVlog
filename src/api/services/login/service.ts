@@ -5,7 +5,9 @@ import React from "react"
 
 export const loginService = {
   async login(service: any) {
-    const response = await axios.get(`https://login/${service}`)
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/oatu2/authorization/${service}`
+    )
     if (response.status !== 200) {
       throw new Error("fetch error")
     }

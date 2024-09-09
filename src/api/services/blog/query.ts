@@ -26,12 +26,11 @@ export const blogQueryOptions = {
 }
 
 export const useBlogListInfoQuery = (): UseQueryResult<
-  BlogsInfo<BlogItem[]>,
-  Error
+  BlogsInfo<BlogItem[]>
 > => {
   const queryClient = useQueryClient()
 
-  return useQuery<BlogsInfo<BlogItem[]>, Error>({
+  return useQuery<BlogsInfo<BlogItem[]>>({
     ...blogQueryOptions.blogListInfo(queryClient),
   })
 }
@@ -43,11 +42,11 @@ export const useBlogQuery = (
 
   return useQuery<BlogsInfo<InsertBlogItem>, Error>({
     ...blogQueryOptions.blogInfo(queryClient, id),
-    ...options
+    ...options,
   })
 }
 export const useAddBlogMutation = (
-  options: MutationOptions<any, Error, InsertBlogItem> = {},
+  options: MutationOptions<any, Error, InsertBlogItem> = {}
 ) => {
   const queryClient = useQueryClient()
 

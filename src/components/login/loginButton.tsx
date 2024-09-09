@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux"
 import { setLogin } from "@/redux/slice/loginSlice"
 import { LoginButtonProps } from "@/api/services/login/model"
 import { loginService } from "@/api/services/login/service"
+import Link from "next/link"
 
 const LoginButton: React.FC<LoginButtonProps> = ({
   service,
@@ -28,13 +29,16 @@ const LoginButton: React.FC<LoginButtonProps> = ({
   })
 
   return (
-    <div
-      className={`flex flex-row w-fit font-pretendard px-16 py-3 rounded-3xl justify-center items-center ${bgColor} my-2 transform hover:scale-105 transition duration-300 cursor-pointer hover:shadow-md`}
-      onClick={() => mutate()}
+    <Link
+      href={`${process.env.NEXT_PUBLIC_GITHUB}?redirect=${process.env.NEXT_PUBLIC_DOMAIN}`}
     >
-      <Image src={imageUrl} width={40} height={55} alt={altText} />
-      <p className="text-black font-bold text-2xl">continue with {service}</p>
-    </div>
+      <div
+        className={`flex flex-row w-fit font-pretendard px-16 py-3 rounded-3xl justify-center items-center ${bgColor} my-2 transform hover:scale-105 transition duration-300 cursor-pointer hover:shadow-md`}
+      >
+        <Image src={imageUrl} width={40} height={55} alt={altText} />
+        <p className="text-black font-bold text-2xl">continue with {service}</p>
+      </div>
+    </Link>
   )
 }
 
