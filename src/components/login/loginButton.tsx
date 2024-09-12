@@ -4,7 +4,7 @@ import { useMutation, UseMutationResult, useQuery } from "@tanstack/react-query"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useDispatch } from "react-redux"
-import { setLogin } from "@/redux/slice/loginSlice"
+import { setToken } from "@/redux/slice/loginSlice"
 import { LoginButtonProps } from "@/api/services/login/model"
 import { loginService } from "@/api/services/login/service"
 import Link from "next/link"
@@ -20,7 +20,7 @@ const LoginButton: React.FC<LoginButtonProps> = ({
   const { mutate, isError, error, data } = useMutation({
     mutationFn: () => loginService.login(service),
     onSuccess: (data) => {
-      dispatch(setLogin(data?.result?.accessToken))
+      dispatch(setToken(data?.result?.accessToken))
       router.push("/")
     },
     onError: (error) => {

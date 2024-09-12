@@ -1,7 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit"
-import { combineReducers } from "redux"
-import { persistStore, persistReducer } from "redux-persist"
-import storage from "redux-persist/lib/storage"
 import loginReducer from "./slice/loginSlice"
 
 export const store = configureStore({

@@ -13,7 +13,7 @@ const blogList = [
     logo: "/images/home/logo.png",
     name: "이현우",
     like: 80,
-    comment: 7,
+    comment: 7
   },
   {
     id: "0bfac118-02f2-4e34-8f38-2b91b5c0b2a8",
@@ -25,7 +25,7 @@ const blogList = [
     logo: "/images/home/logo.png",
     name: "전반숙",
     like: 152,
-    comment: 39,
+    comment: 39
   },
   {
     id: "cf74185e-8a8a-47c1-9f4e-bd1d7b5b0f5f",
@@ -37,7 +37,7 @@ const blogList = [
     logo: "/images/home/logo.png",
     name: "osohyun0224",
     like: 33,
-    comment: 0,
+    comment: 0
   },
   {
     id: "dbe750ba-5e3b-45de-b1a4-61b2be1bb8b1",
@@ -48,7 +48,7 @@ const blogList = [
     logo: "/images/home/logo.png",
     name: "이현우",
     like: 80,
-    comment: 7,
+    comment: 7
   },
   {
     id: "119ff99b-33d3-44e5-979e-2835940d0d3e",
@@ -60,7 +60,7 @@ const blogList = [
     logo: "/images/home/logo.png",
     name: "전반숙",
     like: 152,
-    comment: 39,
+    comment: 39
   },
   {
     id: "f781aa35-19d5-47eb-97b3-9b4d3cb8d03a",
@@ -72,7 +72,7 @@ const blogList = [
     logo: "/images/home/logo.png",
     name: "osohyun0224",
     like: 33,
-    comment: 0,
+    comment: 0
   },
   {
     id: "90f4ae73-57a2-4d11-b9ad-c7e43863f825",
@@ -83,7 +83,7 @@ const blogList = [
     logo: "/images/home/logo.png",
     name: "이현우",
     like: 80,
-    comment: 7,
+    comment: 7
   },
   {
     id: "74a07c94-b41f-4c45-9d79-1675047a4847",
@@ -95,7 +95,7 @@ const blogList = [
     logo: "/images/home/logo.png",
     name: "전반숙",
     like: 152,
-    comment: 21,
+    comment: 21
   },
   {
     id: "cb4a7c12-36f3-4c75-8b6d-88271c71e26b",
@@ -107,7 +107,7 @@ const blogList = [
     logo: "/images/home/logo.png",
     name: "osohyun0224",
     like: 54,
-    comment: 0,
+    comment: 0
   },
   {
     id: "9a9022a6-9bb3-4fc6-b146-2e99a1fa006b",
@@ -118,7 +118,7 @@ const blogList = [
     logo: "/images/home/logo.png",
     name: "이현우",
     like: 11,
-    comment: 7,
+    comment: 7
   },
   {
     id: "cf8f7461-1445-4ac3-907b-58d61ef8d06f",
@@ -129,7 +129,7 @@ const blogList = [
     logo: "/images/home/logo.png",
     name: "이현우",
     like: 80,
-    comment: 6,
+    comment: 6
   },
   {
     id: "84adf7f3-1f64-4d78-9ed7-55f29a01a04e",
@@ -141,8 +141,8 @@ const blogList = [
     logo: "/images/home/logo.png",
     name: "전반숙",
     like: 152,
-    comment: 39,
-  },
+    comment: 39
+  }
 ]
 const blogs = [
   {
@@ -152,44 +152,46 @@ const blogs = [
     logo: "/images/home/logo.png",
     name: "전반숙",
     like: 152,
-    comment: [{
-      id: "0bfac118-02f2-4e34-8f38-2b91b5c0a2b1",
-      user: {
-        id: "0bfac118-02f2-4e34-8f38-2b91b5c0b2a8",
-        name: "조원희",
-      },
-      content: "댓글 test1",
-      createdAt: "2024-08-08T12:34:56.789Z"
-    }],
+    comment: [
+      {
+        id: "0bfac118-02f2-4e34-8f38-2b91b5c0a2b1",
+        user: {
+          id: "0bfac118-02f2-4e34-8f38-2b91b5c0b2a8",
+          name: "조원희"
+        },
+        content: "댓글 test1",
+        createdAt: "2024-08-08T12:34:56.789Z"
+      }
+    ],
     content: [
       {
         type: "paragraph",
         content:
-          "This is **bold text**, and this is *italic text*. You can also create [links](https://example.com).\n- Item 1\n- Item 2\n- Subitem 2.1\n- Subitem 2.2\n > This is a blockquote. It's great for highlighting quotes or important information.",
+          "This is **bold text**, and this is *italic text*. You can also create [links](https://example.com).\n- Item 1\n- Item 2\n- Subitem 2.1\n- Subitem 2.2\n > This is a blockquote. It's great for highlighting quotes or important information."
       },
       {
         type: "codeblock",
         language: "javascript",
         link: [
           [1, [1, 2, 3, 4]],
-          [5, [15, 16, 17, 18, 19]],
+          [5, [15, 16, 17, 18, 19]]
         ],
         content: {
           code: "function greet(name) {\n  const greeting = `Hello, ${name}!`;\n  console.log(greeting);\n}\n\nconst names = ['Alice', 'Bob', 'Charlie','Alice', 'Bob', 'Charlie','Alice', 'Bob', 'Charlie'];\nnames.forEach((name) => {\n  greet(name);\n});\nconsole.log('Greeting complete!');function greet(name) {\n  const greeting = `Hello, ${name}!`;\n  console.log(greeting);\n}\n\nconst names = ['Alice', 'Bob', 'Charlie','Alice', 'Bob', 'Charlie','Alice', 'Bob', 'Charlie'];\nnames.forEach((name) => {\n  greet(name);\n});\nconsole.log('Greeting complete!');",
-          text: "이 코드는 이름 목록을 순회하며 각 이름에 대해 인사말을 출력합니다.\n'greet' 함수는 이름을 받아서 'Hello, {name}!' 형식의 인사말을 생성합니다.\n'forEach'를 사용하여 'names' 배열의 각 이름에 대해 'greet' 함수를 호출합니다.\n모든 인사말을 출력한 후 'Greeting complete!' 메시지를 출력합니다.\n이 코드는 콘솔에 각 이름에 대한 인사말과 완료 메시지를 표시​.",
-        },
+          text: "이 코드는 이름 목록을 순회하며 각 이름에 대해 인사말을 출력합니다.\n'greet' 함수는 이름을 받아서 'Hello, {name}!' 형식의 인사말을 생성합니다.\n'forEach'를 사용하여 'names' 배열의 각 이름에 대해 'greet' 함수를 호출합니다.\n모든 인사말을 출력한 후 'Greeting complete!' 메시지를 출력합니다.\n이 코드는 콘솔에 각 이름에 대한 인사말과 완료 메시지를 표시​."
+        }
       },
       {
         type: "paragraph",
         content:
-          "# Markdown Example\nThis is **bold text** and *italic text*.\nHere is a [link](https://example.com) to a website.",
+          "# Markdown Example\nThis is **bold text** and *italic text*.\nHere is a [link](https://example.com) to a website."
       },
       {
         type: "paragraph",
         content:
-          "This is **bold text**, and this is *italic text*. You can also create [links](https://example.com).\n- Item 1\n- Item 2\n- Subitem 2.1\n- Subitem 2.2\n > This is a blockquote. It's great for highlighting quotes or important information.",
-      },
-    ],
+          "This is **bold text**, and this is *italic text*. You can also create [links](https://example.com).\n- Item 1\n- Item 2\n- Subitem 2.1\n- Subitem 2.2\n > This is a blockquote. It's great for highlighting quotes or important information."
+      }
+    ]
   },
   {
     id: "5f50b060-6a8c-41e8-8896-6d8c68e59e48",
@@ -203,39 +205,39 @@ const blogs = [
       {
         type: "paragraph",
         content:
-          "This is **bold text**, and this is *italic text*. You can also create [links](https://example.com).\n- Item 1\n- Item 2\n- Subitem 2.1\n- Subitem 2.2\n > This is a blockquote. It's great for highlighting quotes or important information.",
+          "This is **bold text**, and this is *italic text*. You can also create [links](https://example.com).\n- Item 1\n- Item 2\n- Subitem 2.1\n- Subitem 2.2\n > This is a blockquote. It's great for highlighting quotes or important information."
       },
       {
         type: "codeblock",
         language: "javascript",
         link: [
           [1, [1, 2, 3, 4]],
-          [5, [15, 16, 17, 18, 19]],
+          [5, [15, 16, 17, 18, 19]]
         ],
         content: {
           code: "function greet(name) {\n  const greeting = `Hello, ${name}!`;\n  console.log(greeting);\n}\n\nconst names = ['Alice', 'Bob', 'Charlie','Alice', 'Bob', 'Charlie','Alice', 'Bob', 'Charlie'];\nnames.forEach((name) => {\n  greet(name);\n});\nconsole.log('Greeting complete!');function greet(name) {\n  const greeting = `Hello, ${name}!`;\n  console.log(greeting);\n}\n\nconst names = ['Alice', 'Bob', 'Charlie','Alice', 'Bob', 'Charlie','Alice', 'Bob', 'Charlie'];\nnames.forEach((name) => {\n  greet(name);\n});\nconsole.log('Greeting complete!');",
-          text: "이 코드는 이름 목록을 순회하며 각 이름에 대해 인사말을 출력합니다.\n'greet' 함수는 이름을 받아서 'Hello, {name}!' 형식의 인사말을 생성합니다.\n'forEach'를 사용하여 'names' 배열의 각 이름에 대해 'greet' 함수를 호출합니다.\n모든 인사말을 출력한 후 'Greeting complete!' 메시지를 출력합니다.\n이 코드는 콘솔에 각 이름에 대한 인사말과 완료 메시지를 표시​.",
-        },
+          text: "이 코드는 이름 목록을 순회하며 각 이름에 대해 인사말을 출력합니다.\n'greet' 함수는 이름을 받아서 'Hello, {name}!' 형식의 인사말을 생성합니다.\n'forEach'를 사용하여 'names' 배열의 각 이름에 대해 'greet' 함수를 호출합니다.\n모든 인사말을 출력한 후 'Greeting complete!' 메시지를 출력합니다.\n이 코드는 콘솔에 각 이름에 대한 인사말과 완료 메시지를 표시​."
+        }
       },
       {
         type: "paragraph",
         content:
-          "# Markdown Example\nThis is **bold text** and *italic text*.\nHere is a [link](https://example.com) to a website.",
+          "# Markdown Example\nThis is **bold text** and *italic text*.\nHere is a [link](https://example.com) to a website."
       },
       {
         type: "paragraph",
         content:
-          "This is **bold text**, and this is *italic text*. You can also create [links](https://example.com).\n- Item 1\n- Item 2\n- Subitem 2.1\n- Subitem 2.2\n > This is a blockquote. It's great for highlighting quotes or important information.",
-      },
-    ],
-  },
+          "This is **bold text**, and this is *italic text*. You can also create [links](https://example.com).\n- Item 1\n- Item 2\n- Subitem 2.1\n- Subitem 2.2\n > This is a blockquote. It's great for highlighting quotes or important information."
+      }
+    ]
+  }
 ]
 
 export const blog = [
   http.get(`https://blogs`, () => {
     return HttpResponse.json({
       state: 200,
-      result: blogList,
+      result: blogList
     })
   }),
   http.get(`https://blog`, ({ request }) => {
@@ -244,7 +246,7 @@ export const blog = [
 
     return HttpResponse.json({
       state: 200,
-      result: blogs.find((blog) => blog.id == blogId),
+      result: blogs.find((blog) => blog.id == blogId)
     })
   }),
   http.post(`https://blog`, async ({ request }) => {
@@ -272,12 +274,12 @@ export const blog = [
 
       return HttpResponse.json({
         state: 200,
-        result: null,
+        result: null
       })
     } catch (error) {
       return HttpResponse.json({
         state: 500,
-        result: null,
+        result: null
       })
     }
   })

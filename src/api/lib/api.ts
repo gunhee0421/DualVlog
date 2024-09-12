@@ -4,7 +4,7 @@ import { QueryClient } from "@tanstack/react-query"
 
 import { ACCESS_TOKEN_HEADER_KEY } from "../constants/header-key"
 import { store } from "@/redux/store"
-import { setLogin } from "@/redux/slice/loginSlice"
+import { setToken } from "@/redux/slice/loginSlice"
 import { access } from "fs"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://localhost:8080"
@@ -49,8 +49,8 @@ export class Fetcher {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          ...options?.headers,
-        },
+          ...options?.headers
+        }
       }
 
       const response = await fetch(url, fetchOptions)
@@ -94,11 +94,11 @@ export class Fetcher {
         ...options,
         headers: {
           [ACCESS_TOKEN_HEADER_KEY]: `Bearer ${client.getQueryData<string>([
-            "access",
+            "access"
           ])!}`,
           Accept: "application/json",
-          "Content-Type": "application/json",
-        },
+          "Content-Type": "application/json"
+        }
       }
 
       // const response = await fetch(`${this.baseUrl}${url}`, fetchOptions)
@@ -142,8 +142,8 @@ export class Fetcher {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          [ACCESS_TOKEN_HEADER_KEY]: `Bearer ${refresh}`,
-        },
+          [ACCESS_TOKEN_HEADER_KEY]: `Bearer ${refresh}`
+        }
       })
 
       if (res.ok) {
@@ -167,7 +167,7 @@ export class Fetcher {
       // client.setQueryData(["access"], newAccessToken)
 
       store.dispatch(
-        setLogin({ accessToken: newAccessToken, refreshToken: refresh })
+        setToken({ accessToken: newAccessToken, refreshToken: refresh })
       )
     } catch {
       if (global.location) {
@@ -191,7 +191,7 @@ export class Fetcher {
   public async post<ResponseType>(url: string, options?: RequestInit) {
     return this.request<ResponseType>(url, {
       method: "POST",
-      ...options,
+      ...options
     })
   }
 
@@ -202,14 +202,14 @@ export class Fetcher {
   ) {
     return this.authRequest<ResponseType>(url, client, {
       method: "POST",
-      ...options,
+      ...options
     })
   }
 
   public async put<ResponseType = Error>(url: string, options?: RequestInit) {
     return this.request<ResponseType>(url, {
       method: "PUT",
-      ...options,
+      ...options
     })
   }
 
@@ -220,14 +220,14 @@ export class Fetcher {
   ) {
     return this.authRequest<ResponseType>(url, client, {
       method: "PUT",
-      ...options,
+      ...options
     })
   }
 
   public async patch<ResponseType = Error>(url: string, options?: RequestInit) {
     return this.request<ResponseType>(url, {
       method: "PATCH",
-      ...options,
+      ...options
     })
   }
 
@@ -238,7 +238,7 @@ export class Fetcher {
   ) {
     return this.authRequest<ResponseType>(url, client, {
       method: "PATCH",
-      ...options,
+      ...options
     })
   }
 
@@ -248,7 +248,7 @@ export class Fetcher {
   ) {
     return this.request<ResponseType>(url, {
       method: "DELETE",
-      ...options,
+      ...options
     })
   }
 
@@ -259,7 +259,7 @@ export class Fetcher {
   ) {
     return this.authRequest<ResponseType>(url, client, {
       method: "DELETE",
-      ...options,
+      ...options
     })
   }
 }

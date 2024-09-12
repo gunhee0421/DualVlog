@@ -1,0 +1,22 @@
+.w-md-editor-toolbar li button svg {
+  width: 1rem;
+  height: 1rem;
+}
+.w-md-editor-content ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+}
+
+.w-md-editor-content ol {
+  list-style-type: decimal;
+  margin-left: 1.5rem;
+}
+
+.w-md-editor-content li {
+  margin-bottom: 0.5rem;
+}
+.CodeMirror {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  height: 100%;
+}

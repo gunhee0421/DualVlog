@@ -5,7 +5,7 @@ import {
   useQuery,
   useQueryClient,
   UseQueryOptions,
-  UseQueryResult,
+  UseQueryResult
 } from "@tanstack/react-query"
 import { blogService } from "./service"
 import { BlogItem, BlogsInfo, InsertBlogItem } from "./model"
@@ -14,15 +14,15 @@ import { UUID } from "crypto"
 export const blogQueryOptions = {
   blogListInfo: (client: QueryClient) => ({
     queryKey: ["blogListInfo"],
-    queryFn: () => blogService.blogInfo(client),
+    queryFn: () => blogService.blogInfo(client)
   }),
   blogInfo: (client: QueryClient, id: string) => ({
     queryKey: ["blogInfo", id],
-    queryFn: () => blogService.getBlog(client, id),
+    queryFn: () => blogService.getBlog(client, id)
   }),
   blogAdd: (client: QueryClient) => ({
-    mutationFn: (dto: InsertBlogItem) => blogService.addBlog(client, dto),
-  }),
+    mutationFn: (dto: InsertBlogItem) => blogService.addBlog(client, dto)
+  })
 }
 
 export const useBlogListInfoQuery = (): UseQueryResult<
@@ -31,18 +31,18 @@ export const useBlogListInfoQuery = (): UseQueryResult<
   const queryClient = useQueryClient()
 
   return useQuery<BlogsInfo<BlogItem[]>>({
-    ...blogQueryOptions.blogListInfo(queryClient),
+    ...blogQueryOptions.blogListInfo(queryClient)
   })
 }
 export const useBlogQuery = (
   id: UUID,
-  options: UseQueryOptions<BlogsInfo<InsertBlogItem>, Error>
+  options?: UseQueryOptions<BlogsInfo<InsertBlogItem>, Error>
 ): UseQueryResult<BlogsInfo<InsertBlogItem>, Error> => {
   const queryClient = useQueryClient()
 
   return useQuery<BlogsInfo<InsertBlogItem>, Error>({
     ...blogQueryOptions.blogInfo(queryClient, id),
-    ...options,
+    ...options
   })
 }
 export const useAddBlogMutation = (
@@ -52,6 +52,6 @@ export const useAddBlogMutation = (
 
   return useMutation({
     ...blogQueryOptions.blogAdd(queryClient),
-    ...options,
+    ...options
   })
 }

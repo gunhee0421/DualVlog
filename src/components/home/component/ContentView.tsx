@@ -46,7 +46,10 @@ const ContentView = ({ data }: { data: BlogItem[] }) => {
           <div key={index} className="pt-3 h-full">
             <div className="flex flex-wrap justify-center items-center w-full h-full">
               {group.map((item, itemIndex) => (
-                <div key={itemIndex} className="h-1/2">
+                <div
+                  key={itemIndex}
+                  className={`${groupedData[1] ? "h-1/2" : "h-[75vh]"}`}
+                >
                   <CardComponent props={item} />
                 </div>
               ))}

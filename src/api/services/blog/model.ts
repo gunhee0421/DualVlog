@@ -27,9 +27,9 @@ export interface InsertBlogItem {
   name: string
 }
 export interface Comment {
-  id: UUID,
-  user: UserItem,
-  content: string,
+  id: UUID
+  user: UserItem
+  content: string
   createdAt: string
 }
 export interface Paragraph {
@@ -49,17 +49,17 @@ export enum TimeTable {
   day = 1,
   week = 7,
   month = 30,
-  year = 365,
+  year = 365
 }
 
 export function isParagraph(
-  content: Paragraph | CodeBlock,
+  content: Paragraph | CodeBlock
 ): content is Paragraph {
   return content.type === "paragraph"
 }
 
 export function isCodeBlock(
-  content: Paragraph | CodeBlock,
+  content: Paragraph | CodeBlock
 ): content is CodeBlock {
   return content.type === "codeblock"
 }

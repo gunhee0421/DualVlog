@@ -7,7 +7,7 @@ const CardComponent: React.FC<{ props: BlogItem }> = ({ props }) => {
   return (
     <Link href={`blog/${props.id}`}>
       <div
-        className="flex flex-col shadow-md w-fit mx-[10px] h-[360px] hover:shadow-xl transition-transform duration-200 ease-in-out hover:-translate-y-1"
+        className="flex flex-col shadow-md w-fit mx-[10px] h-[35vh] hover:shadow-xl transition-transform duration-200 ease-in-out hover:-translate-y-1"
         style={{
           width: "330px",
           marginBottom: "20px",

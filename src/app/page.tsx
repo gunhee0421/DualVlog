@@ -7,12 +7,11 @@ import { stat } from "fs"
 import HomePage from "@/components/home/HomePage"
 import { useRouter } from "next/navigation"
 
-const Main = () => {
+const App = () => {
   const router = useRouter()
-
   router.push("/home")
 
   return <div></div>
 }
 
-export default Main
+export default App
