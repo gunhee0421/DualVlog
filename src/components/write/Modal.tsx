@@ -1,22 +1,25 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { UseFormReturn } from "react-hook-form"
 import { Controlled as CodeMirror } from "react-codemirror2"
 import "codemirror/lib/codemirror.css"
 import "codemirror/theme/material.css"
 import "codemirror/mode/javascript/javascript"
+import { SpellCheck } from "lucide-react"
+import { codeblock, ContentType, paragraph } from "@/api/services/blog/model"
+import { FormData } from "./WritePage"
 
 export const Modal: React.FC<{
-  form: UseFormReturn<{ title: string; content: string }>
+  form: UseFormReturn<FormData>
   setModal: React.Dispatch<React.SetStateAction<boolean>>
 }> = ({ form, setModal }) => {
   const [code, setCode] = useState("")
   const [text, setText] = useState("")
   const [selection, setSelection] = useState<{
-    codeSelection: string
-    textSelection: string
+    textLine: number
+    codeLines: number[] // 사용자에게 보이는 줄 번호
   }>({
-    codeSelection: "",
-    textSelection: ""
+    textLine: 0,
+    codeLines: []
   })
 
   // 드래그한 텍스트 라인 가져오기
@@ -37,14 +40,40 @@ export const Modal: React.FC<{
     // 드래그된 텍스트가 있는 줄 번호
     const lineNumber = textLines.length
 
-    console.log("Selected text in Textarea: ", selectedText)
-    console.log("Selected text starts at line: ", lineNumber)
+    setSelection((prev) => ({
+      ...prev,
+      textLine: lineNumber
+    }))
+  }
 
-    // setSelection((prev) => ({
-    //   ...prev,
-    //   textSelection: selectedText,
-    //   textLine: lineNumber // 드래그한 텍스트가 포함된 줄 번호 저장
-    // }))
+  // CodeMirror에서 드래그한 텍스트와 줄 번호 가져오기
+  const handleCodeSelection = (editor: any) => {
+    const selectedCode = editor.getSelection() // 선택된 코드 가져오기
+    const startLine = editor.getCursor("start").line + 1 // 선택 시작 줄 번호 (0부터 시작하므로 +1)
+    const endLine = editor.getCursor("end").line + 1 // 선택 끝 줄 번호 (0부터 시작하므로 +1)
+
+    const lineNumbers = [] as number[]
+    for (let line = startLine; line <= endLine; line++) {
+      lineNumbers.push(line) // 사용자에게 보이는 줄 번호
+    }
+
+    setSelection((prev) => ({
+      ...prev,
+      codeLines: lineNumbers // 선택된 코드의 줄 번호 업데이트
+    }))
+  }
+
+  const handleOnSubmit = () => {
+    const newContent: codeblock = {
+      type: "codeblock",
+      language: "javascript",
+      link: [[selection.textLine, selection.codeLines]],
+      content: {
+        code: code,
+        text: text
+      }
+    }
+    form.setValue("content", [...form.getValues("content"), newContent])
   }
 
   return (
@@ -58,10 +87,19 @@ export const Modal: React.FC<{
               options={{
                 mode: "javascript",
                 theme: "material",
+                SpellCheck: false,
                 lineNumbers: true
               }}
               onBeforeChange={(editor, data, value) => {
                 setCode(value)
+              }}
+              editorDidMount={(editor) => {
+                editor.on("mouseup", () => {
+                  handleCodeSelection(editor)
+                })
+                editor.on("cursorActivity", () => {
+                  handleCodeSelection(editor)
+                })
               }}
               className="w-full h-full"
             />
@@ -86,14 +124,7 @@ export const Modal: React.FC<{
           </button>
           <button
             className="bg-green-500 text-white px-6 py-3 rounded-lg"
-            onClick={() =>
-              console.log(
-                "선택된 코드: ",
-                selection.codeSelection,
-                "선택된 텍스트: ",
-                selection.textSelection
-              )
-            }
+            onClick={handleOnSubmit}
           >
             연결
           </button>

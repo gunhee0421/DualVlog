@@ -6,12 +6,18 @@ import { Code } from "lucide-react"
 import React, { useEffect, useState } from "react"
 import { UseFormReturn } from "react-hook-form"
 import { Modal } from "./Modal"
+import { codeblock, ContentType, paragraph } from "@/api/services/blog/model"
+import { FormData } from "./WritePage"
+import { useSelector } from "react-redux"
+import { RootState } from "@/redux/store"
 
 export const Footer: React.FC<{
-  form: UseFormReturn<{ title: string; content: string }>
+  form: UseFormReturn<FormData>
 }> = ({ form }) => {
   const router = useRouter()
   const [modal, setModal] = useState(false)
+
+  const contentValue = useSelector((state: RootState) => state.writer.content)
 
   const handleSave = () => {
     console.log(form.watch("content"))
@@ -20,6 +26,19 @@ export const Footer: React.FC<{
   const renderModal = () => {
     if (!modal) return null
     return <Modal form={form} setModal={setModal}></Modal>
+  }
+
+  useEffect(() => {
+    console.log(form.watch("content"))
+  }, [form.watch("content")])
+
+  const handleOnSuccess = () => {
+    const newContent: paragraph = {
+      type: "paragraph",
+      content: contentValue
+    }
+
+    form.setValue("content", [...form.getValues("content"), newContent])
   }
 
   return (
@@ -33,7 +52,10 @@ export const Footer: React.FC<{
       </div>
       <div
         className="flex flex-row items-center gap-2 cursor-pointer hover:font-semibold hover:scale-105 transition-color duration-200 hover:text-green-500"
-        onClick={() => setModal(!modal)}
+        onClick={() => {
+          handleOnSuccess()
+          setModal(!modal)
+        }}
       >
         <Code size={30} />
         <span>코드 추가</span>

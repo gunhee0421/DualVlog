@@ -1,6 +1,11 @@
 import { UUID } from "crypto"
 import { UserInfo, UserItem } from "../user/model"
 
+export enum ContentType {
+  "codeblock",
+  "paragraph"
+}
+
 export interface BlogItem {
   id: UUID
   img: string
@@ -19,7 +24,7 @@ export interface BlogsInfo<T> {
 export interface InsertBlogItem {
   id: UUID
   title: string
-  content: (Paragraph | CodeBlock)[]
+  content: (paragraph | codeblock)[]
   createdAt: string
   comment: Comment[] | []
   like: number
@@ -32,11 +37,11 @@ export interface Comment {
   content: string
   createdAt: string
 }
-export interface Paragraph {
+export interface paragraph {
   type: string
   content: string
 }
-export interface CodeBlock {
+export interface codeblock {
   type: string
   language: string
   link: [number, number[]][]
@@ -53,13 +58,13 @@ export enum TimeTable {
 }
 
 export function isParagraph(
-  content: Paragraph | CodeBlock
-): content is Paragraph {
+  content: paragraph | codeblock
+): content is paragraph {
   return content.type === "paragraph"
 }
 
 export function isCodeBlock(
-  content: Paragraph | CodeBlock
-): content is CodeBlock {
+  content: paragraph | codeblock
+): content is codeblock {
   return content.type === "codeblock"
 }

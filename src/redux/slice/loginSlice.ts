@@ -8,7 +8,7 @@ interface LoginState {
 
 const initialState: LoginState = {
   accessToken: null,
-  refreshToken: null,
+  refreshToken: null
 }
 export const Login = createSlice({
   name: "login",
@@ -21,8 +21,8 @@ export const Login = createSlice({
     logout: (state) => {
       state.accessToken = null
       state.refreshToken = null
-    },
-  },
+    }
+  }
 })
 export const { setToken, logout } = Login.actions
 export default Login.reducer

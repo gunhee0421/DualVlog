@@ -7,12 +7,12 @@ export const userService = {
   async userInfo(client: QueryClient, token: any) {
     const response = await axios.get("https://user", {
       headers: {
-        Authorization: `Bearer ${token}`,
-      },
+        Authorization: `Bearer ${token}`
+      }
     })
     if (response.status !== 200) {
       throw new Error("fetch error")
     }
     return await response.data
-  },
+  }
 }

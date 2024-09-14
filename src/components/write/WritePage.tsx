@@ -6,16 +6,29 @@ import ReactMarkdown from "react-markdown"
 import { useState } from "react"
 import MDEditor from "@uiw/react-md-editor"
 import "@/app/write/custom-editor.css"
+import { paragraph, codeblock } from "@/api/services/blog/model"
+import { useDispatch, useSelector } from "react-redux"
+import { RootState } from "@/redux/store"
+import { setContent } from "@/redux/slice/writeSlice"
+
+export interface FormData {
+  title: string
+  content: Array<paragraph | codeblock>
+}
+
 export const WritePage = () => {
-  const form = useForm({
+  const dispatch = useDispatch()
+
+  const form = useForm<FormData>({
     mode: "onChange",
     defaultValues: {
       title: "",
-      content: ""
+      content: []
     }
   })
-  const handleContentChange = (value: string | undefined) => {
-    form.setValue("content", value || "")
+
+  const handleOnChange = (value: string | undefined) => {
+    dispatch(setContent(value || ""))
   }
 
   return (
@@ -30,8 +43,8 @@ export const WritePage = () => {
         <MDEditor
           className="mt-4 mx-10 min-h-[80vh]"
           autoFocus={true}
-          value={form.watch("content")}
-          onChange={handleContentChange}
+          value={useSelector((state: RootState) => state.writer.content)}
+          onChange={handleOnChange}
         />
       </div>
       <Footer form={form} />
