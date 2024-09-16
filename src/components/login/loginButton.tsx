@@ -13,7 +13,7 @@ const LoginButton: React.FC<LoginButtonProps> = ({
   service,
   imageUrl,
   altText,
-  bgColor,
+  bgColor
 }) => {
   const router = useRouter()
   const dispatch = useDispatch()
@@ -25,7 +25,7 @@ const LoginButton: React.FC<LoginButtonProps> = ({
     },
     onError: (error) => {
       alert("Login Fail")
-    },
+    }
   })
 
   return (

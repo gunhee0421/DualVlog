@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { UseFormReturn } from "react-hook-form"
 import { Controlled as CodeMirror } from "react-codemirror2"
 import "codemirror/lib/codemirror.css"
@@ -21,6 +21,7 @@ export const Modal: React.FC<{
     textLine: 0,
     codeLines: []
   })
+  const linkRef = useRef<[number, number[]][]>([])
 
   // 드래그한 텍스트 라인 가져오기
   const handleTextareaSelection = (
@@ -63,17 +64,26 @@ export const Modal: React.FC<{
     }))
   }
 
+  const handleLinke = () => {
+    const newItem: [number, number[]] = [
+      selection.textLine,
+      selection.codeLines
+    ]
+    linkRef.current = [...linkRef.current, newItem]
+  }
+
   const handleOnSubmit = () => {
     const newContent: codeblock = {
       type: "codeblock",
       language: "javascript",
-      link: [[selection.textLine, selection.codeLines]],
+      link: linkRef.current,
       content: {
         code: code,
         text: text
       }
     }
     form.setValue("content", [...form.getValues("content"), newContent])
+    setModal(false)
   }
 
   return (
@@ -124,15 +134,12 @@ export const Modal: React.FC<{
           </button>
           <button
             className="bg-green-500 text-white px-6 py-3 rounded-lg"
-            onClick={handleOnSubmit}
+            onClick={handleLinke}
           >
             연결
           </button>
           <button
-            onClick={() => {
-              console.log(code, ", ", text)
-              setModal(false)
-            }}
+            onClick={handleOnSubmit}
             className="bg-blue-500 text-white px-6 py-3 rounded-lg"
           >
             저장

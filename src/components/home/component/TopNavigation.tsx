@@ -31,11 +31,11 @@ const TopNavigation = () => {
     if (!token) {
       queryClient.resetQueries({
         queryKey: ["userInfo"],
-        exact: true,
+        exact: true
       })
       queryClient.resetQueries({
         queryKey: ["alarmInfo"],
-        exact: true,
+        exact: true
       })
     }
   }, [token, queryClient])

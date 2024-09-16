@@ -13,12 +13,12 @@ const LoginPage = () => {
       <h1 className="text-gray-500 text-5xl mb-[50px] font-pretendard tracking-tighter font-extrabold">
         Daul Velog
       </h1>
-      <LoginButton
+      {/* <LoginButton
         service="github"
         imageUrl="/images/login/github.png"
         altText="GitHub login"
         bgColor="bg-white"
-      />
+      /> */}
       <LoginButton
         service="google"
         imageUrl="/images/login/google.png"

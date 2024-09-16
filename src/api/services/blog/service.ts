@@ -20,5 +20,5 @@ export const blogService = {
   async addBlog(client: QueryClient, dto: InsertBlogItem) {
     const response = await axios.post(`https://blog`, dto)
     return response.data
-  },
+  }
 }

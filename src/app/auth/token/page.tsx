@@ -25,6 +25,7 @@ const Auth = () => {
       const RefreshTokenUrl = parm.get("refreshToken")
 
       if (AccessTokenUrl && RefreshTokenUrl) {
+        console.log(AccessTokenUrl)
         dispatch(
           setToken({
             accessToken: AccessTokenUrl,

@@ -44,6 +44,7 @@ export const WritePage = () => {
           className="mt-4 mx-10 min-h-[80vh]"
           autoFocus={true}
           value={useSelector((state: RootState) => state.writer.content)}
+          // value={form.watch('content').to}
           onChange={handleOnChange}
         />
       </div>

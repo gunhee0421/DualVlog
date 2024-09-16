@@ -22,7 +22,7 @@ export interface BlogsInfo<T> {
   result: T | null
 }
 export interface InsertBlogItem {
-  id: UUID
+  id?: UUID
   title: string
   content: (paragraph | codeblock)[]
   createdAt: string
