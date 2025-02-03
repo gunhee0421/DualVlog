@@ -5,10 +5,10 @@ import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import "github-markdown-css"
 import {
-  CodeBlock,
+  codeblock,
   InsertBlogItem,
   isCodeBlock,
-  isParagraph,
+  isParagraph
 } from "@/api/services/blog/model"
 import { Title } from "@/components/blog/component/Tittle"
 import { Info } from "@/components/blog/component/User"
@@ -26,12 +26,12 @@ const BlogPage = () => {
 
   const { isLoading, data, isError } = useBlogQuery(id, {
     queryKey: ["blogInfo", id],
-    refetchOnMount: true,
+    refetchOnMount: true
   })
 
   return (
     <div
-      className="w-full h-full overflow-y-auto font-s bg-gray-100"
+      className="w-full h-full overflow-y-auto bg-gray-100"
       onClick={() => setIsClick(false)}
     >
       {data?.result ? (
@@ -41,11 +41,13 @@ const BlogPage = () => {
             if (isParagraph(item)) {
               return (
                 <div key={index} className="markdown-body">
-                  <ReactMarkdown>{item.content}</ReactMarkdown>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {item.content}
+                  </ReactMarkdown>
                 </div>
               )
             } else if (isCodeBlock(item)) {
-              return <Code_Block props={item as CodeBlock} key={index} />
+              return <Code_Block props={item as codeblock} key={index} />
             }
           })}
           <Bottom blog={data?.result} />

@@ -1,9 +1,9 @@
-import { CodeBlock, InsertBlogItem } from "@/api/services/blog/model"
+import { codeblock, InsertBlogItem } from "@/api/services/blog/model"
 import React, { useEffect, useState } from "react"
 import { TextView } from "../component/TextView"
 import { CodeView } from "../component/CodeView"
 
-export const Code_Block: React.FC<{ props: CodeBlock }> = ({ props }) => {
+export const Code_Block: React.FC<{ props: codeblock }> = ({ props }) => {
   const [focusedLines, setFocusedLines] = useState<number[]>(
     props.link[0][1] || []
   )

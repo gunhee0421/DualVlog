@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.markdown-body {
+/* .markdown-body {
   @apply pr-[300px] pl-10;
-}
+} */

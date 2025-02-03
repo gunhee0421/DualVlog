@@ -47,6 +47,7 @@ const UserTopNavigation = () => {
           />
         </svg>
       </div>
+      {alarm && <AlarmModal onClose={() => setAlarm(false)} />}
     </div>
   )
 }

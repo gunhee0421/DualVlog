@@ -3,7 +3,7 @@ import {
   useQuery,
   useQueryClient,
   UseQueryOptions,
-  UseQueryResult,
+  UseQueryResult
 } from "@tanstack/react-query"
 import { UserInfo } from "./model"
 import { userService } from "./service"
@@ -13,18 +13,18 @@ import { RootState } from "@/redux/store"
 export const userQueryOptions = {
   userInfo: (client: QueryClient, token: any) => ({
     queryKey: ["userInfo"],
-    queryFn: () => userService.userInfo(client, token),
-  }),
+    queryFn: () => userService.userInfo(client, token)
+  })
 }
 
 export const useUserInfoQuery = (
-  options = {},
+  options = {}
 ): UseQueryResult<UserInfo, Error> => {
   const queryClient = useQueryClient()
   const token = useSelector((state: RootState) => state.login.accessToken)
 
   return useQuery<UserInfo, Error>({
     ...userQueryOptions.userInfo(queryClient, token),
-    enabled: !!token,
+    enabled: !!token
   })
 }
