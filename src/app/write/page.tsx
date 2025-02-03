@@ -4,5 +4,3 @@ const Page = () => {
   return <WritePage />
 }
 export default Page
-
-export const getSeverSideProps = () => {}

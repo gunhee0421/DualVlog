@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import "github-markdown-css"
 import {
-  CodeBlock,
+  codeblock,
   InsertBlogItem,
   isCodeBlock,
   isParagraph
@@ -47,7 +47,7 @@ const BlogPage = () => {
                 </div>
               )
             } else if (isCodeBlock(item)) {
-              return <Code_Block props={item as CodeBlock} key={index} />
+              return <Code_Block props={item as codeblock} key={index} />
             }
           })}
           <Bottom blog={data?.result} />

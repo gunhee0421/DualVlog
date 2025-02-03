@@ -7,11 +7,16 @@ import "codemirror/mode/javascript/javascript"
 import { SpellCheck } from "lucide-react"
 import { codeblock, ContentType, paragraph } from "@/api/services/blog/model"
 import { FormData } from "./WritePage"
+import { useDispatch, useSelector } from "react-redux"
+import { setLink } from "@/redux/slice/writeSlice"
+import { RootState } from "@/redux/store"
 
 export const Modal: React.FC<{
   form: UseFormReturn<FormData>
   setModal: React.Dispatch<React.SetStateAction<boolean>>
 }> = ({ form, setModal }) => {
+  const dispatch = useDispatch()
+
   const [code, setCode] = useState("")
   const [text, setText] = useState("")
   const [selection, setSelection] = useState<{
@@ -82,7 +87,8 @@ export const Modal: React.FC<{
         text: text
       }
     }
-    form.setValue("content", [...form.getValues("content"), newContent])
+    // form.setValue("content", [...form.getValues("content"), newContent])
+    dispatch(setLink(newContent))
     setModal(false)
   }
 

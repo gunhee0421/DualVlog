@@ -1,10 +1,10 @@
-import { CodeBlock } from "@/api/services/blog/model"
 import React, { useEffect, useRef, useState } from "react"
 import { textSplit } from "./textSplit"
 import styles from "@/app/styles/codeView.module.css"
+import { codeblock } from "@/api/services/blog/model"
 
 export const TextView: React.FC<{
-  props: CodeBlock
+  props: codeblock
   onLineFocus: (focusedLines: number[]) => void
 }> = ({ props, onLineFocus }) => {
   const lines = textSplit(props.content.text)

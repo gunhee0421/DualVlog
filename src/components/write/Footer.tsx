@@ -40,17 +40,6 @@ export const Footer: React.FC<{
     if (!modal) return null
     return <Modal form={form} setModal={setModal}></Modal>
   }
-  const handleCode = () => {
-    if (contentValue.length == 0) {
-      return
-    }
-    const newContent: paragraph = {
-      type: "paragraph",
-      content: contentValue
-    }
-
-    form.setValue("content", [...form.getValues("content"), newContent])
-  }
 
   const handleCreate = () => {
     if (form.watch("title").length == 0) {
@@ -88,7 +77,6 @@ export const Footer: React.FC<{
       <div
         className="flex flex-row items-center gap-2 cursor-pointer hover:font-semibold hover:scale-105 transition-color duration-200 hover:text-green-500"
         onClick={() => {
-          handleCode()
           setModal(!modal)
         }}
       >
@@ -96,12 +84,6 @@ export const Footer: React.FC<{
         <span>코드 추가</span>
       </div>
       <div className="flex flex-row font-semibold gap-3">
-        {/* <div
-          className=" cursor-pointer flex justify-center px-[20px] py-[5px] rounded items-center border-1 border-solid bg-gray-300 hover:bg-sky-400 hover:scale-105 transition-all duration-200 hover:text-white"
-          onClick={handleSave}
-        >
-          임시저장
-        </div> */}
         <div
           className=" cursor-pointer flex justify-center px-[20px] py-[5px] rounded items-center border-1 border-solid bg-gray-200  hover:bg-blue-500 hover:scale-105 transition-all duration-200 hover:text-white"
           onClick={handleCreate}

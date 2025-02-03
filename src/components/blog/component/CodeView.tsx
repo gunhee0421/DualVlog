@@ -1,11 +1,11 @@
-import { CodeBlock } from "@/api/services/blog/model"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import styles from "@/app/styles/codeView.module.css"
 import React, { useEffect, useLayoutEffect, useRef } from "react"
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism"
+import { codeblock } from "@/api/services/blog/model"
 
 export const CodeView: React.FC<{
-  props: CodeBlock
+  props: codeblock
   focusedLines: number[]
 }> = ({ props, focusedLines }) => {
   const codeContainerRef = useRef<HTMLDivElement>(null)
@@ -24,7 +24,7 @@ export const CodeView: React.FC<{
 
         container.scrollTo({
           top: offset,
-          behavior: "smooth",
+          behavior: "smooth"
         })
       }
     }
@@ -55,11 +55,11 @@ export const CodeView: React.FC<{
               focusedLines.length > 0
                 ? {
                     opacity: isFocused ? "inherit" : "0.1",
-                    transition: "opacity 0.5s ease-in-out",
+                    transition: "opacity 0.5s ease-in-out"
                   }
                 : {
-                    transition: "opacity 0.5s ease-in-out",
-                  },
+                    transition: "opacity 0.5s ease-in-out"
+                  }
           }
         }}
       >
